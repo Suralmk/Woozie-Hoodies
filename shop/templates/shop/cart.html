@@ -1,0 +1,54 @@
+{% extends 'shop/base.html' %} {% block page_title %} Cart {% endblock %}
+{% load static %} {% block basecontent %}
+
+<!-- Hero Sections-->
+<section class="cart">
+  <section class="cart__wrapper">
+    <div class="cart__wrapper-items">
+      <h3>Your Cart</h3>
+      <div class="cart__wrapper-items__item">
+        <img src="{% static '/img/hoodie-1.png' %}" alt="" />
+        <h5>Cotton Hoodie</h5>
+        <h6 class="price">500</h6>
+        <input type="number" />
+        <h6 class="total-price">500</h6>
+      </div>
+      <div class="cart__wrapper-items__item">
+        <img src="{% static '/img/hoodie-2.png' %}" alt="" />
+        <h5>Cotton Hoodie</h5>
+        <h6 class="price">500</h6>
+        <input type="number" />
+        <h6 class="total-price">500</h6>
+      </div>
+      <div class="cart__wrapper-items__item">
+        <img src="{% static '/img/hoodie-3.png' %}" alt="" />
+        <h5>Cotton Hoodie</h5>
+        <h6 class="price">500</h6>
+        <input type="number" />
+        <h6 class="total-price">500</h6>
+      </div>
+      <div class="cart__wrapper-items__item">
+        <img src="{% static '/img/hoodie-4.png' %}" alt="" />
+        <h5>Cotton Hoodie</h5>
+        <h6 class="price">500</h6>
+        <input type="number" />
+        <h6 class="total-price">500</h6>
+      </div>
+    </div>
+    <div class="cart__wrapper-checkout">
+      300
+      <div class="cart__wrapper-checkout__ways">
+        <a href="" class="link-one chapa">
+          <img src="{% static 'img/Chapa.jfif' %}" alt="" /> Chapa</a
+        >
+        <a href="" class="link-one paypal">
+          <img src="{% static 'img/paypal.png' %}" alt="" /></a
+        >
+        <a href="" class="link-one stripe">
+          <img src="{% static 'img/stripe-2.png' %}" alt="" /></a
+        >
+      </div>
+    </div>
+  </section>
+</section>
+{% endblock %}

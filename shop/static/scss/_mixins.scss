@@ -1,0 +1,39 @@
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    grid-gap: 30px;
+  }
+  @mixin flex_between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @mixin flex_column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  @mixin flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @mixin screen_center {
+    max-width: 1440px;
+    margin: 0 auto
+  }
+
+  @mixin nav_submenu {
+        position: absolute;
+        @include flex_between();
+        z-index: 5;
+        background: white;
+        height: auto;
+        width:max-content;
+        padding: 20px;
+        border-radius: 10px;
+        align-items: flex-start;
+        box-shadow: $box-shadow;
+        display: none;
+  }

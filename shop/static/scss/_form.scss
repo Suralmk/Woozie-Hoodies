@@ -1,0 +1,43 @@
+@import "mixins";
+@import "colors";
+form {
+    width: 100%;
+    @include flex_column();
+    gap: 5px;
+
+    p {
+        width: 100%;
+        @include flex_column();
+        gap: 5px;
+        label {
+            font-size: 16px;
+            color: $black;
+        }
+        input {
+            width: 100%;
+            border: 1px solid $lightdark;
+            padding: 10px 15px;
+            background: transparent;
+            outline: none;
+            border-radius: 5px;
+            &:focus {
+                border:$border;
+            }
+        }
+        .helptext {
+            display: none;
+        }
+    }
+    ul {
+        display: none;
+    }
+    ul.errorlist {
+        @include flex_column();
+        gap: 5px;
+        li{
+            color: red;
+            list-style:disc;
+        }   
+    }
+   
+}

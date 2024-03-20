@@ -1,0 +1,69 @@
+{% extends 'shop/base.html' %} {% block page_title %} Woozie Hoodie and
+T-Shirt {% endblock %} {% block basecontent %} {% load static %}
+
+<!-- Hero Sections-->
+<section class="home">
+  <section class="hero">
+    <img src="{% static 'img/lake.jpg' %}" alt="" />
+    <h1>Best Design Hoodies and T-Shirts Representing the world!</h1>
+  </section>
+</section>
+
+<!-- Hoodies Sections-->
+<section class="products">
+  <div class="products__wrapper">
+    <h3>New Hoodies</h3>
+    <div class="product__list">
+      {% for product in products %} {% if product.category.name == "Hoodie" %}
+      <div class="product">
+        <img src="{{ product.image.url }}" alt="" />
+        <h4>{{ product.name }}</h4>
+        <div class="product__action">
+          <p class="product__price">{{ product.price }}ETB</p>
+          <a class="product__cart button">Add <i class="ri-add-line"></i> </a>
+        </div>
+      </div>
+      {% endif %} {% endfor %}
+    </div>
+    <div class="see-more"><a href="" class="link-one">See More</a></div>
+  </div>
+</section>
+
+<!-- Mockups Sections-->
+<section class="mockups">
+  <div class="mockups__wrapper">
+    <div class="mockups__wrapper-main">
+      <img src="{% static '/img/image1.jpg' %}" alt="" />
+    </div>
+    <div class="mockups__wrapper-sub">
+      <img src="{% static '/img/image2.jpg' %}" alt="" />
+    </div>
+  </div>
+</section>
+
+<!-- Tihsherts Sections-->
+<section class="products">
+  <div class="products__wrapper">
+    <h3>New T-shirts</h3>
+    <div class="product__list2">
+      <div class="product__list2-wrapper">
+        {% for product in products %} {% if product.category.name == "T-Shirt"%}
+          <div class="product2">
+            <img src="{{ product.image.url }}" alt="" />
+            <div class="product2__detail">
+              <h5>{{ product.name }}</h5>
+              <div class="product2__detail-action">
+                <p class="product2__detail-action_price">{{ product.price }}ETB</p>
+                <a data-product="{{ product.id }}" data-action="add"  class="product2__detail-action_cart link-two update-cart"
+                  >Add <i class="ri-add-line"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+    <div class="see-more"><a href="" class="link-one">See More</a></div>
+  </div>
+</section>
+{% endblock %}

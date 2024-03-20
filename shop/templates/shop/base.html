@@ -1,0 +1,204 @@
+{% load sass_tags %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="{% sass_src 'scss/style.scss' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block page_title %} {% endblock %}</title>
+    <script>
+      var user = "{{ request.user }}";
+
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getCookie("csrftoken");
+    </script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <ul>
+          <li>+251914719859</li>
+          <li>fanos.support@gmail.com</li>
+          <li>ENG</li>
+          <li>ETB/USD</li>
+        </ul>
+      </div>
+      <div class="nav__menu">
+        <h3>Woozie</h3>
+        <ul>
+          <li><a href="{% url 'shop:home' %}">Home</a></li>
+          <li class="catagories">
+            <a>Catagories <i class="ri-arrow-down-s-line"></i></a>
+            <div class="catagories__menu">
+              <ul class="catagories__menu-main">
+               
+                <li><a href="">Hoodies</a></li>
+                <li><a href="">T-Shirts</a></li>
+                
+              </ul>
+              <ul>
+                <h5>Designs</h5>
+                <li>Habeshawi</li>
+                <li>Art</li>
+                <li>Animation</li>
+                <li>Anime</li>
+                <li>Asian</li>
+                <li>Old School</li>
+              </ul>
+            </div>
+          </li>
+          <li class="pages">
+            <a>Pages <i class="ri-arrow-down-s-line"></i></a>
+            <ul class="pages__menu">
+              <li>Contact</li>
+              <li>About Us</li>
+              <li>Services</li>
+              <li>Locations</li>
+              <li>Licence</li>
+              <li>Report Issue</li>
+            </ul>
+          </li>
+          <li>
+            <a href=""><i class="ri-search-line"></i></a>
+          </li>
+          <li class="cart">
+            <a href="{% url 'cart:cart' %}"><i class="ri-shopping-cart-line"></i></a>
+            <span class="cart__number">0</span>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="pro">
+            <a><i class="ri-user-3-line"></i></a>
+            <ul class="pro__menu">
+              <h5>Hello {{ request.user.first_name }}</h5>
+              <li>Account</li>
+              <li>Orders</li>
+              <li>Payments</li>
+              <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <div class="nav__auth-links">
+            <li><a href="{% url  'account_login' %}">LogIn</a></li>
+            <li>
+              <a href="{% url  'account_signup' %}" class="register__llink"
+                >Register</a
+              >
+            </li>
+          </div>
+
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <section class="base__content">
+      {% block basecontent %} {% endblock %}
+    </section>
+    <footer>
+      <div class="footer__wrapper">
+        <div class="footer__detail">
+          <h3>Woozie</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
+            excepturi iusto omnis
+          </p>
+          <div class="social__links">
+            <ul>
+              <li><i class="ri-facebook-circle-fill"></i></li>
+              <li><i class="ri-instagram-line"></i></li>
+              <li><i class="ri-twitter-x-fill"></i></li>
+              <li><i class="ri-youtube-fill"></i></li>
+            </ul>
+          </div>
+          <div class="footer__detail-paymentoptions">
+            <img src="{% static 'img/paypal-2.png' %}" alt="" />
+            <img src="{% static 'img/stripe.jfif' %}" alt="" />
+            <img src="{% static 'img/chapa.jfif' %}" alt="" />
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__links-container">
+            <h6>Catagories</h6>
+            <ul>
+              <li>Hoodies</li>
+              <li>T-shirt</li>
+            </ul>
+          </div>
+          <div class="footer__links-container">
+            <h6>Designs</h6>
+            <ul>
+              <li>Habeshawi</li>
+              <li>Art</li>
+              <li>Animation</li>
+              <li>Anime</li>
+              <li>Japanesse</li>
+              <li>Old School</li>
+            </ul>
+          </div>
+          <div class="footer__links-container">
+            <h6>Services</h6>
+            <ul>
+              <li>Custom Hoodies</li>
+              <li>Custom T-shirt</li>
+              <li>Delivery</li>
+              <li>Discount</li>
+              <li>Locations</li>
+            </ul>
+          </div>
+          <div class="footer__links-container">
+            <h6>Services</h6>
+            <ul>
+              <li>Custom Hoodies</li>
+              <li>Custom T-shirt</li>
+              <li>Delivery</li>
+              <li>Discount</li>
+              <li>Locations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script defer src="{% static '/js/base.js' %}"></script>
+    <script defer src="{% static '/js/cart.js' %}"></script>
+  </body>
+</html>
