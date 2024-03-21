@@ -36,7 +36,11 @@ def cart_remove(request):
     product_id = data.get("productId")
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
-    return JsonResponse({"cart_number" : cart.__len__()}, safe=False)
+    response = {
+        "cart_number" : cart.__len__(),
+        "total_price" : cart.get_total_price()
+    }
+    return JsonResponse(response, safe=False)
 
 def cart_detail(request):
     cart = Cart(request)

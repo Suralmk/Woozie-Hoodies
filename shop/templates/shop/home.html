@@ -19,7 +19,7 @@
         <img src="{{ product.image.url }}" alt="" />
         <a
           class="product__detail"
-          href="{% url 'shop:product_detail' product.slug %}"
+          href="{% url 'shop:product_detail' product_slug=product.slug %}"
           ><h5>{{ product.name }}</h5></a
         >
         <div class="product__action">
@@ -35,7 +35,7 @@
       </div>
       {% endif %} {% endfor %}
     </div>
-    <div class="see-more"><a href="{% url 'shop:product_category' 'hoodie' %}" class="link-one">See More <i class="ri-arrow-right-circle-fill"></i></a></div>
+    <div class="see-more"><a href="{% url 'shop:product_category' category_slug='hoodie' %}" class="link-one">See More <i class="ri-arrow-right-circle-fill"></i></a></div>
   </div>
 </section>
 
@@ -63,7 +63,7 @@
           <div class="product2__detail">
             <a
               class="product__detail"
-              href="{% url 'shop:product_detail' product.slug %}"
+              href="{% url 'shop:product_detail' product_slug=product.slug %}"
               ><h5>{{ product.name }}</h5></a
             >
             <div class="product2__detail-action">
@@ -83,7 +83,7 @@
         {% endif %} {% endfor %}
       </div>
     </div>
-    <div class="see-more"><a href="{% url 'shop:product_category' 't-shirt' %}" class="link-one">See More <i class="ri-arrow-right-circle-fill"></i></a></div>
+    <div class="see-more"><a href="{% url 'shop:product_category' category_slug='t-shirt' %}" class="link-one">See More <i class="ri-arrow-right-circle-fill"></i></a></div>
   </div>
 </section>
 {% endblock %}

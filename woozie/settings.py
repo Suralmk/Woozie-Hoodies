@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "shop",
     "order",
     "cart",
+    "payment",
 
     "sass_processor",
     'allauth',
@@ -48,6 +49,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+
+    'django_chapa',
 ]
 
 MIDDLEWARE = [
@@ -220,3 +223,12 @@ CACHES = {
     'LOCATION': 'redis://127.0.0.1:6379',
  }
 }
+
+# chapa Setting
+CHAPA_TRANSACTION_MODEL = 'woozie.chapa_model'
+
+CHAPA_SECRET = config("CHAPA_SECRET")
+
+CHAPA_API_URL = ''
+
+CHAPA_API_VERSION = 'v1'

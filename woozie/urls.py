@@ -23,4 +23,6 @@ urlpatterns = [
     path('', include("shop.urls", namespace="shop")),
     path('cart/', include("cart.urls", namespace="cart")),
     path('accounts/', include('allauth.urls')),
+
+    path('chapa-webhook', include('django_chapa.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

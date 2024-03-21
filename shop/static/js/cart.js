@@ -1,5 +1,4 @@
 var updateBtns = document.querySelectorAll('.update-cart')
-
 for (var i = 0; i < updateBtns.length; i++) {
   updateBtns[i].addEventListener('click', function () {
     var override, quantity
@@ -26,7 +25,7 @@ for (var i = 0; i < updateBtns.length; i++) {
     }
   })
 }
-const cartNumber = document.querySelector('.cart__number')
+const cartNumber = document.querySelectorAll('.cart__number')
 const cartAdd = (productId, quantity, override) => {
   var url = '/cart/update-cart/'
   fetch(url, {
@@ -46,11 +45,14 @@ const cartAdd = (productId, quantity, override) => {
     })
 
     .then(data => {
-      cartNumber.innerHTML = data.cart_number
+      cartNumber.forEach(element => {
+        element.innerHTML = data.cart_number
+      });
     })
 }
 
 const cartRemoveBtns = document.querySelectorAll('.remove_item')
+const totalPrice = document.querySelector('.total__price')
 for (var i = 0; i < cartRemoveBtns.length; i++) {
   cartRemoveBtns[i].addEventListener('click', function () {
     var productId = this.dataset.product
@@ -81,7 +83,12 @@ const cartRemove = (productId, item) => {
     })
 
     .then(data => {
-      cartNumber.innerHTML = data.cart_number
+      //cartNumber.innerHTML = data.cart_number
+      cartNumber.forEach(element => {
+        element.innerHTML = data.cart_number
+      });
+      totalPrice.innerHTML = data.total_price
       item.style.display = 'none'
+      console.log(data)
     })
 }
