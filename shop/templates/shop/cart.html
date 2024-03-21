@@ -5,48 +5,60 @@
 <section class="cart">
   <section class="cart__wrapper">
     <div class="cart__wrapper-items">
-      <h3>Your Cart</h3>
-      <div class="cart__wrapper-items__item">
-        <img src="{% static '/img/hoodie-1.png' %}" alt="" />
-        <h5>Cotton Hoodie</h5>
-        <h6 class="price">500</h6>
-        <input type="number" />
-        <h6 class="total-price">500</h6>
+      <div class="cart__wrapper-items_action">
+        <a href="{% url 'shop:home' %}" style="width: max-content;"class="link-one"><i class="ri-arrow-left-line"></i> Continue Shopping</a>
       </div>
+      {% for item in cart %}
+      {% with product=item.product %}
       <div class="cart__wrapper-items__item">
-        <img src="{% static '/img/hoodie-2.png' %}" alt="" />
-        <h5>Cotton Hoodie</h5>
-        <h6 class="price">500</h6>
-        <input type="number" />
-        <h6 class="total-price">500</h6>
+        <img src="{{ product.image.url  }}" alt="" />
+        <div class="item__detail">
+          <h5>{{ product.name }} </h5>
+          <span>Availibe <i class="ri-check-fill"></i></span>
+          
+        </div>
+       
+        <h6 class="price">{{ item.price }}ETB</h6>
+        <input type="number" value="{{ item.quantity }}" />
+        <h6 class="total-price">{{ item.total_price }}ETB</h6>
+        <a class="remove_item" data-product="{{ product.id }}"><i class="ri-close-large-line"></i></a>
       </div>
-      <div class="cart__wrapper-items__item">
-        <img src="{% static '/img/hoodie-3.png' %}" alt="" />
-        <h5>Cotton Hoodie</h5>
-        <h6 class="price">500</h6>
-        <input type="number" />
-        <h6 class="total-price">500</h6>
-      </div>
-      <div class="cart__wrapper-items__item">
-        <img src="{% static '/img/hoodie-4.png' %}" alt="" />
-        <h5>Cotton Hoodie</h5>
-        <h6 class="price">500</h6>
-        <input type="number" />
-        <h6 class="total-price">500</h6>
-      </div>
+      {% endwith %}
+      {% endfor %}
+
     </div>
-    <div class="cart__wrapper-checkout">
-      300
-      <div class="cart__wrapper-checkout__ways">
-        <a href="" class="link-one chapa">
-          <img src="{% static 'img/Chapa.jfif' %}" alt="" /> Chapa</a
-        >
-        <a href="" class="link-one paypal">
-          <img src="{% static 'img/paypal.png' %}" alt="" /></a
-        >
-        <a href="" class="link-one stripe">
-          <img src="{% static 'img/stripe-2.png' %}" alt="" /></a
-        >
+    <div class="cart__wrapper-summary">
+      <h4>Cart Summary</h4>
+      <div class="cart__wrapper-summary_wrapper">
+        <ul>
+          <li>
+            <h6>Category Types: </h6>
+            <p>20</p>
+          </li>
+          <li>
+            <h6>Total Items:</h6>
+            <p>20</p>
+          </li>
+          <li>
+            <h6>Continue as</h6>
+            <p>Surafel Melaku</p>
+          </li>
+          <li>
+            <select name="" id="">
+              <option value="">Would you like Delivery?</option>
+              <option value="">Yes</option>
+              <option value="">No</option>
+            </select>
+          </li>
+          <li>
+            <h5>Total Price: </h5>
+            <h4>5000.00 ETB</h4>
+          </li>
+        </ul>
+        <hr>
+  
+        <a style="width: max-content;"class="link-two">Proceed to Checkout <i class="ri-arrow-right-line"></i></a>
+
       </div>
     </div>
   </section>

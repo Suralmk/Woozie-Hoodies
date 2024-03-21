@@ -1,4 +1,4 @@
-@import "colors";
+@import "variables";
 h1 {
     font-size: 60px;
     color: $black;
@@ -23,4 +23,7 @@ h1 {
     font-weight: lighter;
     color: $lightwhite;
   }
- 
+  hr {
+    height: 3px; /* Set height */
+    background-color: #000000; /* Set background color */
+}

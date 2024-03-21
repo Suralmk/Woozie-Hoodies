@@ -1,6 +1,6 @@
 @import "mixins";
 @import "form";
-@import "colors";
+@import "variables";
 .auth {
     &__container {
         @include flex_center();
@@ -17,6 +17,7 @@
         box-shadow: $box-shadow;
         width: 450px;
         height: auto;
+        border-radius: 10px;
         p {
             color: $black;
         }

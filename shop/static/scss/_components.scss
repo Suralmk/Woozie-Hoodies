@@ -9,20 +9,40 @@ button, input[type=submit] {
     cursor: pointer;
     border-radius: 5px;
 }
+input {
+  width: 100%;
+  border: 1px solid $lightdark;
+  padding: 10px 15px;
+  background: transparent;
+  outline: none;
+  border-radius: 5px;
+  &:focus {
+      border:$border;
+  }
+}
 
 a.link-one {
     color:$black;
-    padding: 5px 15px;
+    padding: 15px 10px;
     border: $border;
     border-radius: 5px;
     cursor: pointer;
 }
 a.link-two {
   background:$black;
-  padding: 10px 15px;
+  padding: 15px 10px;
   border: $border;
   border-radius: 5px;
   color: $white;
+  cursor: pointer;
+}
+select {
+  width: 100%;
+  border: 1px solid $lightdark;
+  padding: 10px 15px;
+  background: transparent;
+  outline: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 .product {
@@ -39,6 +59,10 @@ a.link-two {
       object-fit: contain;
       background-blend-mode: color-burn;
     }
+    &__detail {
+      color: $black;
+      
+    }
     &:hover {
       transform: scale(1.05);
       box-shadow: $box-shadow;
@@ -49,7 +73,7 @@ a.link-two {
       p {
         color: $black;
       }
-      a {
+      &-cart {
         padding: 5px 10px;
         background: $black;
         color: $white;
@@ -103,10 +127,32 @@ a.link-two {
                  font-weight: bold;
             }
         }
-        
-       
       }
   }
   a.button {
     cursor: pointer;
   }
+
+  dialog {
+    border: none;
+    position: fixed;
+    width: 100%;
+    margin: 100px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    &::backdrop {
+      backdrop-filter: blur(3px);
+    }
+    form {
+      width: 100%;
+      background: $white;
+      padding:100px 20px;
+      margin: 0;
+
+      input {
+        width: 70%;
+        margin: 0 auto;
+      }
+    }  
+}
+

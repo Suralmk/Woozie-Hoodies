@@ -1,10 +1,15 @@
 @import "mixins";
-@import "colors";
+@import "variables";
+
 form {
+
+
     width: 100%;
     @include flex_column();
     gap: 5px;
-
+    &.add_cart {
+        @include flex_center();
+    }
     p {
         width: 100%;
         @include flex_column();
@@ -13,17 +18,7 @@ form {
             font-size: 16px;
             color: $black;
         }
-        input {
-            width: 100%;
-            border: 1px solid $lightdark;
-            padding: 10px 15px;
-            background: transparent;
-            outline: none;
-            border-radius: 5px;
-            &:focus {
-                border:$border;
-            }
-        }
+ 
         .helptext {
             display: none;
         }
@@ -39,5 +34,6 @@ form {
             list-style:disc;
         }   
     }
-   
+
 }
+

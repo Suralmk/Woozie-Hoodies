@@ -29,6 +29,12 @@
       href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lacquer&family=Playpen+Sans:wght@100..800&family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
     <title>{% block page_title %} {% endblock %}</title>
     <script>
       var user = "{{ request.user }}";
@@ -58,7 +64,7 @@
       <div class="nav__header">
         <ul>
           <li>+251914719859</li>
-          <li>fanos.support@gmail.com</li>
+          <li>Wooziehoodiessupport@gmail.com</li>
           <li>ENG</li>
           <li>ETB/USD</li>
         </ul>
@@ -68,13 +74,19 @@
         <ul>
           <li><a href="{% url 'shop:home' %}">Home</a></li>
           <li class="catagories">
-            <a>Catagories <i class="ri-arrow-down-s-line"></i></a>
+            <a>Categories <i class="ri-arrow-down-s-line"></i></a>
             <div class="catagories__menu">
               <ul class="catagories__menu-main">
-               
-                <li><a href="">Hoodies</a></li>
-                <li><a href="">T-Shirts</a></li>
-                
+                <li>
+                  <a href="{% url 'shop:product_category' 'hoodie' %}"
+                    >Hoodies</a
+                  >
+                </li>
+                <li>
+                  <a href="{% url 'shop:product_category' 't-shirt' %}"
+                    >T-Shirts</a
+                  >
+                </li>
               </ul>
               <ul>
                 <h5>Designs</h5>
@@ -99,11 +111,18 @@
             </ul>
           </li>
           <li>
-            <a href=""><i class="ri-search-line"></i></a>
+            <a class="search_menu" style="cursor: pointer"
+              ><i class="ri-search-line"></i
+            ></a>
           </li>
           <li class="cart">
-            <a href="{% url 'cart:cart' %}"><i class="ri-shopping-cart-line"></i></a>
-            <span class="cart__number">0</span>
+            <a href="{% url 'cart:cart' %}"
+              ><i class="ri-shopping-cart-line"></i
+            ></a>
+            <span class="cart__number">
+              {% with total_items=cart|length %} {% if total_items > 0 %}
+              {{total_items }} {% else %} 0 {% endif %} {% endwith %}
+            </span>
           </li>
           {% if request.user.is_authenticated %}
           <li class="pro">
@@ -113,7 +132,11 @@
               <li>Account</li>
               <li>Orders</li>
               <li>Payments</li>
-              <li><a href="{% url 'account_logout' %}">Logout</a></li>
+              <li>
+                <a href="{% url 'account_logout' %}"
+                  ><i class="ri-logout-box-line"></i> Logout</a
+                >
+              </li>
             </ul>
           </li>
           {% else %}
@@ -130,6 +153,16 @@
         </ul>
       </div>
     </nav>
+    <dialog>
+      <form action="" role="search">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="color,design, category..."
+        />
+      </form>
+    </dialog>
     <section class="base__content">
       {% block basecontent %} {% endblock %}
     </section>

@@ -3,6 +3,7 @@
 @import "auth";
 @import "mixins";
 @import "components";
+@import  "form";
 
 nav {
   @include flex_column();
@@ -189,7 +190,7 @@ footer {
   height: auto;
   .hero {
     position: relative;
-    height: 600px;
+    height: 700px;
     padding: 50px;
     img {
       width: 100%;
@@ -205,6 +206,14 @@ footer {
       width: 50%;
       line-height: 65px;
       color: $black;
+      font-family: "Lacquer", system-ui;
+      font-weight: 400;
+      font-style: normal;
+      span {
+        color: transparent;
+        background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(195,255,119,1) 50%, rgba(255,184,0,1) 94%);
+        background-clip: text;
+      }
     }
   }
 }
@@ -286,49 +295,89 @@ footer {
       align-items: flex-start;
       padding: 50px;
       color: $black;
-      gap: 50px;
+      gap: 30px;
       height: auto;
       &-items {
         height: auto;
-        width: 60%;
+        width: 70%;
         @include flex_column();
         gap: 15px;
+        &_action {
+          @include flex_between();
+          width: 100%;
+        }
         &__item {
           @include flex_between();
           width: 100%;
           padding: 20px;
-          border-radius: 10px;
-          background: $lightwhite;
+          border-radius: 5px;
+          background: $white;
+          border: 0.5px solid rgba(36, 36, 36, 0.156);
+          position: relative;
           img {
             width: 100px;
             height: 100px;
-          } h5 {
+            object-fit: contain;
+          } 
+          .item__detail {
+            h5 {
             flex: 0.8;
+            @include flex_column();
+          }
+          span {
+            i {
+              color: green;
+            }
+          }
           }
           input {
-            width: max-content;
-            padding: 5px 10px;
-            border: none;
+            border: 1px solid $lightdark;
+            padding: 10px 10px;
+            background: transparent;
             outline: none;
+            border-radius: 5px;
+            width: 70px;
+            font-size: 17px;
           }
           h6 {
 
           }
+          .remove_item {
+            color: $black;
+            position: absolute;
+            top:10px;
+            right: 20px;
+          }
         }
       }
 
-      &-checkout {
-        width: 40%;
+      &-summary {
+        width: 30%;
         background: $white;
-        height: 400px;
+        height: auto;
         padding: 20px;
-        margin-top: 65px;
         border-radius: 10px;
         box-shadow: $box-shadow;
-        &__ways {
+        margin-top: 70px;
+        @include flex_column();
+          gap: 15px;
+        &_wrapper {
           @include flex_column();
-          gap: 10px;
+          gap: 15px;
           width: 100%;
+          ul {
+            @include flex_column();
+            gap: 15px;
+            width: 100%;
+            li {
+              @include flex_between();
+              gap: 15px;
+              width: 100%;
+              p {
+                color: $black;
+              }
+            }
+          }
           a {
             width: 100%;
             text-align: center;
@@ -357,4 +406,66 @@ footer {
         }
       }
     }
+}
+
+.productdetail {
+  width: 100%;
+  height: auto;
+    &__wrapper {
+      @include flex_between();
+      @include screen_center();
+      gap: 50px;
+      padding: 100px;
+      align-items: flex-start;
+        &-image {
+          width: 40%;
+          height: auto;
+          background: $lightwhite;
+          padding: 30px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+        }
+
+        &-detail {
+          @include flex_column();
+          gap: 15px;
+          width: 60%;
+          height: auto;
+          padding: 30px;
+          h4 {
+            color: $black;
+          }
+          &__category {
+            padding: 10px 20px;
+            background: $lightwhite;
+            border-radius: 5px;
+          }
+          p {
+            color: $black;
+          }
+          &__add {
+              margin-top: 30px;
+              @include flex_center();
+              justify-content: flex-start;
+              gap: 15px;
+              display: flex;
+              input {
+                border: 1px solid $lightdark;
+                padding: 10px 10px;
+                background: transparent;
+                outline: none;
+                border-radius: 5px;
+                width: 70px;
+                font-size: 17px;
+              }
+              button {
+                display: inline;
+                margin-top: 0;
+              }
+          }
+      }
+  }
 }

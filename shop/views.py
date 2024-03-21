@@ -14,8 +14,17 @@ def home(request):
     return render(request, "shop/home.html", context)
 
 def product_list(request):
-    return render(request, "shop/product_list.html")
+    products = Product.objects.all()
+    context = {
+        "products" : products
+    }
+    return render(request, "shop/product_list.html", context)
 
-def product_detail(request):
-    return render(request, "shop/product_detail.html")
+def product_detail(request, product_slug):
+    single_product = Product.objects.filter(slug=product_slug).first()
+    products = Product.objects.all()
+    return render(request, "shop/product_detail.html", {"single_product" : single_product, "products" : products})
 
+def product_category(request, category):
+    products = Product.objects.filter(category__slug=category)
+    return render(request, "shop/product_category.html", {"products" : products})

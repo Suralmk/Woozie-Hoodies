@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "shop",
+    "order",
+    "cart",
 
     "sass_processor",
     'allauth',
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -202,4 +205,18 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v13.0',
         'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
     }
+}
+
+# Session Settings 
+
+CART_SESSION_ID = 'cart'
+
+
+# Cache Settings 
+
+CACHES = {
+ 'default': {
+    'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+    'LOCATION': 'redis://127.0.0.1:6379',
+ }
 }

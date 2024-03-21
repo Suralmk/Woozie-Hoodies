@@ -1,8 +1,8 @@
-{% extends 'shop/base.html' %} {% block page_title %} Hoodies and T-Shirts
-collection {% endblock %} {% load static %} {% block basecontent %}
+{% extends 'shop/base.html' %} {% block page_title %} T-Shirts collection 
+{% endblock %} {% load static %} {% block basecontent %}
 <section class="products">
   <div class="products__wrapper">
-    <h3>Checkout our latest Hoodie and T-Shirt designs</h3>
+    <h3>{{ products.category.name}}Category Name</h3>
     <div class="product__list">
       {% for product in products %}
       <div class="product">
@@ -25,8 +25,6 @@ collection {% endblock %} {% load static %} {% block basecontent %}
       </div>
       {% endfor %}
     </div>
-    <div class="see-more"><a href="" class="link-one">See More</a></div>
   </div>
 </section>
-
 {% endblock %}
