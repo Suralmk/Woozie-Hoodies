@@ -25,6 +25,6 @@ def product_detail(request, product_slug):
     products = Product.objects.all()
     return render(request, "shop/product_detail.html", {"single_product" : single_product, "products" : products})
 
-def product_category(request, category):
+def product_category(request, product_category):
     products = Product.objects.filter(category__slug=category)
     return render(request, "shop/product_category.html", {"products" : products})
