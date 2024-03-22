@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from celery import Celery
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -219,12 +221,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 # Session Settings 
 
-CART_SESSION_ID = 'cart'
+
 
 
 # Cache Settings 
-
-# settings.py
 
 CACHES = {
     'default': {
@@ -243,6 +243,9 @@ SESSION_CACHE_ALIAS = 'default'
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
 SESSION_SAVE_EVERY_REQUEST=True
+
+CART_SESSION_ID = 'cart'
+
 # chapa Setting
 CHAPA_TRANSACTION_MODEL = 'woozie.chapa_model'
 
@@ -251,3 +254,12 @@ CHAPA_SECRET = config("CHAPA_SECRET")
 CHAPA_API_URL = ''
 
 CHAPA_API_VERSION = 'v1'
+
+
+#Celery Configuration
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+
+CELERY_IMPORTS = ('order.tasks',)
