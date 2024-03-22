@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'django_chapa',
     'debug_toolbar',
+    "django_redis",
 ]
 
 MIDDLEWARE = [
@@ -194,7 +195,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }, 
     'facebook': {
         'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
-        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
         'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'INIT_PARAMS': {'cookie': True},
@@ -209,7 +210,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'short_name'
         ],
         'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
+        # 'LOCALE_FUNC': 'path.to.callable',
         'VERIFIED_EMAIL': False,
         'VERSION': 'v13.0',
         'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
@@ -223,13 +224,25 @@ CART_SESSION_ID = 'cart'
 
 # Cache Settings 
 
+# settings.py
+
 CACHES = {
- 'default': {
-    'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-    'LOCATION': 'redis://127.0.0.1:6379',
- }
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Adjust the URL as per your Redis configuration
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
 }
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+SESSION_CACHE_ALIAS = 'default'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+
+SESSION_SAVE_EVERY_REQUEST=True
 # chapa Setting
 CHAPA_TRANSACTION_MODEL = 'woozie.chapa_model'
 
