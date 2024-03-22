@@ -255,6 +255,7 @@ CHAPA_API_URL = ''
 
 CHAPA_API_VERSION = 'v1'
 
+CHAPA_WEBHOOK_URL= "http://127.0.0.1:8000/"
 
 #Celery Configuration
 

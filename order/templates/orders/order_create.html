@@ -5,7 +5,7 @@
   <div class="orderCreate__wrapper">
     <div class="orderCreate__wrapper-form">
       <h4>Checkout</h4>
-      <form method="POST" class="order-form">
+      <form  method="POST" class="order-form"  action="{% url 'payment:process' %}">
         {{ form.as_p }}
         <p><input type="submit" value="Place order" /></p>
         {% csrf_token %}
