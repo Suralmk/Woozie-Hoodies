@@ -18,7 +18,7 @@ load static %} {% block basecontent %}
       <div class="cart__item">
         <img src="{{ product.image.url  }}" alt="" />
         <div class="item__detail">
-          <h5>{{ product.name }}</h5>
+         <a href="{{  product.get_absolute_url }}" style="color: black;"> <h5>{{ product.name }}</h5></a>
           <span>Availibe <i class="ri-check-fill"></i></span>
         </div>
         <h6 class="price">{{ item.price }}ETB</h6>
