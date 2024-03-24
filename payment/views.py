@@ -15,12 +15,13 @@ def payment_process(request):
         success_url = request.build_absolute_uri(reverse('payment:completed'))
         cancel_url = request.build_absolute_uri(reverse('payment:canceled'))
 
+        transaction_id = get_transaction_number()
         data = {
                 "email":order.email,
                 "amount" :order.get_total_cost(),
                 "first_name":order.first_name,
                 "last_name":order.last_name,
-                "tx_ref":get_transaction_number(),
+                "tx_ref":transaction_id,
                 "callback_url":"https://127.0.0.1:1200/",
                 "return_url":success_url,
                 "customization":{
@@ -30,7 +31,8 @@ def payment_process(request):
             }
         
         response = chapa.initialize(**data)
-        print(response)
+        verification_response = chapa.verify(transaction_id)
+        print(verification_response)
         return redirect(response["data"].get("checkout_url"))
 
     return render(request, 'payment/payment_process.html', {"order" : order})

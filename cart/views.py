@@ -8,7 +8,7 @@ from shop.models import Product
 # Create your views here.
 @login_required(login_url="account_login")
 def cart(request):
-    return render(request, "shop/cart.html")
+    return render(request, "cart/cart.html")
 
 @require_POST
 def update_cart(request):
@@ -27,7 +27,7 @@ def cart_add(request):
     cart.add(product=product,
         quantity=int(data.get('quantity')),
         override_quantity=data.get('override'))
-    return JsonResponse({"cart_number" : cart.__len__()}, safe=False)
+    return JsonResponse({"cart_number" : cart.__len__(), "total_price" : cart.get_total_price()}, safe=False)
 
 @require_POST
 def cart_remove(request):

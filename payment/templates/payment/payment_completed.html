@@ -1,5 +1,12 @@
-{% extends 'shop/base.html' %} {% block page_title %} Woozie | Payment Successful {% endblock %} 
-{% load static %} 
-{% block basecontent %}
-<h1>Payment Successful </h1>
+{% extends 'shop/base.html' %} {% block page_title %} Order Created {% endblock %} {% load static %} {% block basecontent %}
+<div class="paymentStatus">
+  <div class="paymentStatus__wrapper">
+    <h1>Thank you!</h1>
+    <p>
+      Your Pyment is Succesfully completed <i class="ri-check-fill"></i>
+    </p>
+    <p>You can check you payment in <a href="">Payments</a> page and your order in <a href="">Orders</a> page</p>
+  </div>
+</div>
+
 {% endblock %}

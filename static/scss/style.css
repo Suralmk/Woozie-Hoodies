@@ -435,6 +435,8 @@ nav {
           font-size: 12px;
           padding: 0 3px;
           width: auto; }
+          nav .nav__menu ul li.cart .cart__number.hidden {
+            display: none; }
       nav .nav__menu ul li a {
         color: #383838;
         font-weight: bolder;
@@ -635,7 +637,7 @@ footer {
     padding: 50px;
     color: #383838;
     gap: 30px;
-    height: auto; }
+    min-height: 90vh; }
     .cart .cart__wrapper-items {
       height: auto;
       width: 70%;
@@ -695,6 +697,10 @@ footer {
           .cart .cart__wrapper-summary_wrapper a img {
             width: max-content;
             height: 30px; }
+          .cart .cart__wrapper-summary_wrapper a.blur {
+            background: rgba(110, 110, 110, 0.721);
+            color: rgba(255, 255, 255, 0.834);
+            cursor: not-allowed; }
           .cart .cart__wrapper-summary_wrapper a.paypal {
             background: gold;
             color: #383838;
@@ -779,7 +785,7 @@ footer {
     padding: 50px;
     color: #383838;
     gap: 30px;
-    height: auto; }
+    min-height: 90vh; }
     .orderCreate__wrapper-form {
       width: 60%;
       gap: 30px;
@@ -816,10 +822,10 @@ footer {
           .orderCreate__wrapper-info ul li p {
             color: #383838; }
 
-.orderCreated {
+.paymentStatus {
   width: 100%;
-  height: 90vh; }
-  .orderCreated__wrapper {
+  min-height: 90vh; }
+  .paymentStatus__wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -832,14 +838,27 @@ footer {
     color: #383838;
     gap: 30px;
     height: auto; }
-    .orderCreated__wrapper p {
+    .paymentStatus__wrapper p {
       color: #383838;
       font-size: 20px; }
+      .paymentStatus__wrapper p i {
+        font-weight: bolder;
+        font-size: 20px;
+        padding: 5px;
+        background: #3a792a;
+        color: white;
+        border-radius: 50%; }
+      .paymentStatus__wrapper p a {
+        color: #1010ad;
+        font-weight: bolder; }
+      .paymentStatus__wrapper p a:hover {
+        text-decoration: underline; }
 
 .paymentProcess {
   width: 100%;
   height: auto;
-  background: rgba(218, 218, 218, 0.405); }
+  background: rgba(218, 218, 218, 0.405);
+  min-height: 90vh; }
   .paymentProcess__wrapper {
     display: flex;
     flex-direction: column;
@@ -849,8 +868,7 @@ footer {
     margin: 0 auto;
     align-items: flex-start;
     padding: 50px;
-    gap: 30px;
-    height: auto; }
+    gap: 30px; }
     .paymentProcess__wrapper h4 {
       margin-bottom: 30px;
       text-transform: capitalize; }

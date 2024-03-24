@@ -1,4 +1,5 @@
 var updateBtns = document.querySelectorAll('.update-cart')
+const totalPrice = document.querySelector('.total__price')
 for (var i = 0; i < updateBtns.length; i++) {
   updateBtns[i].addEventListener('click', function () {
     var override, quantity
@@ -46,13 +47,15 @@ const cartAdd = (productId, quantity, override) => {
 
     .then(data => {
       cartNumber.forEach(element => {
+        element.classList.remove("hidden")
         element.innerHTML = data.cart_number
       });
+      console.log(data)
+      totalPrice.innerHTML = data.total_price
     })
 }
 
 const cartRemoveBtns = document.querySelectorAll('.remove_item')
-const totalPrice = document.querySelector('.total__price')
 for (var i = 0; i < cartRemoveBtns.length; i++) {
   cartRemoveBtns[i].addEventListener('click', function () {
     var productId = this.dataset.product
@@ -65,10 +68,9 @@ for (var i = 0; i < cartRemoveBtns.length; i++) {
 
   })
 }
-const cartRemove = (productId, item) => {
+const cartRemove = async (productId, item) => {
   var url = '/cart/cart-remove/'
-
-  fetch(url, {
+ await  fetch(url, {
     method: 'POST',
     headers: {
       'content-Type': 'application/json',
@@ -83,12 +85,16 @@ const cartRemove = (productId, item) => {
     })
 
     .then(data => {
-      //cartNumber.innerHTML = data.cart_number
       cartNumber.forEach(element => {
         element.innerHTML = data.cart_number
       });
       totalPrice.innerHTML = data.total_price
       item.style.display = 'none'
       console.log(data)
+      if (data.total_price == 0 ) {
+        location.reload()
+      }
     })
 }
+
+

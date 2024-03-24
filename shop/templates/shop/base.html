@@ -119,10 +119,12 @@
             <a href="{% url 'cart:cart' %}"
               ><i class="ri-shopping-cart-line"></i
             ></a>
-            <span class="cart__number">
-              {% with total_items=cart|length %} {% if total_items > 0 %}
-              {{total_items }} {% else %} 0 {% endif %} {% endwith %}
+            {% with total_items=cart|length %}
+            <span class="cart__number  {% if total_items == 0 %} hidden {% endif %} ">
+               {% if total_items > 0 %}
+              {{total_items }} {% else %} 0 {% endif %} 
             </span>
+            {% endwith %}
           </li>
           {% if request.user.is_authenticated %}
           <li class="pro">

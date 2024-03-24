@@ -13,6 +13,7 @@ load static %} {% block basecontent %}
           ><i class="ri-arrow-left-line"></i> Continue Shopping</a
         >
       </div>
+      {% if cart|length > 0 %}
       {% for item in cart %} {% with product=item.product %}
       <div class="cart__item">
         <img src="{{ product.image.url  }}" alt="" />
@@ -20,7 +21,6 @@ load static %} {% block basecontent %}
           <h5>{{ product.name }}</h5>
           <span>Availibe <i class="ri-check-fill"></i></span>
         </div>
-
         <h6 class="price">{{ item.price }}ETB</h6>
         <input type="number" value="{{ item.quantity }}" />
         <h6 class="total-price">{{ item.total_price }}ETB</h6>
@@ -32,20 +32,20 @@ load static %} {% block basecontent %}
         ></a>
       </div>
       {% endwith %} {% endfor %}
+      {% else %}
+      <h1 class="cart__empty">Your cart is empty!</h1>
+      {% endif %}
+
     </div>
     <div class="cart__wrapper-summary">
       <h4>Cart Summary</h4>
       <div class="cart__wrapper-summary_wrapper">
         <ul>
-          <!-- <li>
-            <h6>Category Types:</h6>
-            <p>T-shirt | Hoodie</p>
-          </li> -->
           <li>
             <h6>User</h6>
             <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
           </li>
-          <hr>
+          <hr />
           <li>
             <h6>Total Items:</h6>
             <p class="cart__number">
@@ -53,7 +53,7 @@ load static %} {% block basecontent %}
               {{total_items }} {% else %} 0 {% endif %} {% endwith %}
             </p>
           </li>
-          
+
           <!-- <li>
             <select name="" id="">
               <option value="">Would you like Delivery?</option>
@@ -69,10 +69,21 @@ load static %} {% block basecontent %}
           </li>
         </ul>
         <hr />
-
-        <a style="width: max-content" class="link-two" href="{% url 'orders:order_create' %}"
+        {% if cart|length != 0 %} 
+        <a
+          style="width: max-content"
+          class="link-two"
+          
+          href="{% url 'orders:order_create' %}"
           >Proceed to Checkout <i class="ri-arrow-right-line"></i
         ></a>
+        {% else %}
+        <a
+          style="width: max-content"
+          class="link-two  blur "
+          >Proceed to Checkout <i class="ri-arrow-right-line"></i
+        ></a>
+         {% endif %}
       </div>
     </div>
   </section>
