@@ -274,6 +274,42 @@ dialog {
       width: 70%;
       margin: 0 auto; }
 
+.cart__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background: white;
+  border: 0.5px solid rgba(36, 36, 36, 0.156);
+  position: relative; }
+  .cart__item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; }
+  .cart__item .item__detail h5 {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between; }
+  .cart__item .item__detail span i {
+    color: green; }
+  .cart__item input {
+    border: 1px solid rgba(49, 48, 48, 0.459);
+    padding: 10px 10px;
+    background: transparent;
+    outline: none;
+    border-radius: 5px;
+    width: 70px;
+    font-size: 17px; }
+  .cart__item .remove_item {
+    color: #383838;
+    position: absolute;
+    top: 10px;
+    right: 20px; }
+
 form {
   width: 100%;
   display: flex;
@@ -613,41 +649,6 @@ footer {
         align-items: center;
         justify-content: space-between;
         width: 100%; }
-      .cart .cart__wrapper-items__item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 20px;
-        border-radius: 5px;
-        background: white;
-        border: 0.5px solid rgba(36, 36, 36, 0.156);
-        position: relative; }
-        .cart .cart__wrapper-items__item img {
-          width: 100px;
-          height: 100px;
-          object-fit: contain; }
-        .cart .cart__wrapper-items__item .item__detail h5 {
-          flex: 0.8;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: space-between; }
-        .cart .cart__wrapper-items__item .item__detail span i {
-          color: green; }
-        .cart .cart__wrapper-items__item input {
-          border: 1px solid rgba(49, 48, 48, 0.459);
-          padding: 10px 10px;
-          background: transparent;
-          outline: none;
-          border-radius: 5px;
-          width: 70px;
-          font-size: 17px; }
-        .cart .cart__wrapper-items__item .remove_item {
-          color: #383838;
-          position: absolute;
-          top: 10px;
-          right: 20px; }
     .cart .cart__wrapper-summary {
       width: 30%;
       background: white;
@@ -834,5 +835,60 @@ footer {
     .orderCreated__wrapper p {
       color: #383838;
       font-size: 20px; }
+
+.paymentProcess {
+  width: 100%;
+  height: auto;
+  background: rgba(218, 218, 218, 0.405); }
+  .paymentProcess__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 30px;
+    height: auto; }
+    .paymentProcess__wrapper h4 {
+      margin-bottom: 30px;
+      text-transform: capitalize; }
+    .paymentProcess__wrapper-orders {
+      height: auto;
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px; }
+      .paymentProcess__wrapper-orders table {
+        border-collapse: collapse;
+        gap: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 0.5px solid rgba(53, 53, 53, 0.466);
+        width: 100%; }
+        .paymentProcess__wrapper-orders table thead tr th {
+          text-align: start;
+          background: rgba(49, 48, 48, 0.459);
+          padding: 10px; }
+        .paymentProcess__wrapper-orders table tbody {
+          padding: 10px;
+          background: white;
+          gap: 10px; }
+          .paymentProcess__wrapper-orders table tbody tr {
+            padding: 10px;
+            border-bottom: 0.5px solid rgba(53, 53, 53, 0.466); }
+            .paymentProcess__wrapper-orders table tbody tr td {
+              padding: 10px; }
+            .paymentProcess__wrapper-orders table tbody tr img {
+              width: 100px;
+              height: 100px;
+              object-fit: contain; }
+        .paymentProcess__wrapper-orders table .total .num {
+          font-size: 25px; }
+    .paymentProcess__wrapper form {
+      width: 150px; }
 
 /*# sourceMappingURL=style.css.map */

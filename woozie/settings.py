@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django_chapa',
     'debug_toolbar',
     "django_redis",
+    
 ]
 
 MIDDLEWARE = [

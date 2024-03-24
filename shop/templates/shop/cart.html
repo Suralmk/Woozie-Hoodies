@@ -14,7 +14,7 @@ load static %} {% block basecontent %}
         >
       </div>
       {% for item in cart %} {% with product=item.product %}
-      <div class="cart__wrapper-items__item">
+      <div class="cart__item">
         <img src="{{ product.image.url  }}" alt="" />
         <div class="item__detail">
           <h5>{{ product.name }}</h5>

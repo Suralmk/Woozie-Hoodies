@@ -157,3 +157,46 @@ select {
 }
 
 
+.cart__item {
+  @include flex_between();
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background: $white;
+  border: 0.5px solid rgba(36, 36, 36, 0.156);
+  position: relative;
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  } 
+  .item__detail {
+    h5 {
+    flex: 0.8;
+    @include flex_column();
+  }
+  span {
+    i {
+      color: green;
+    }
+  }
+  }
+  input {
+    border: 1px solid $lightdark;
+    padding: 10px 10px;
+    background: transparent;
+    outline: none;
+    border-radius: 5px;
+    width: 70px;
+    font-size: 17px;
+  }
+  h6 {
+
+  }
+  .remove_item {
+    color: $black;
+    position: absolute;
+    top:10px;
+    right: 20px;
+  }
+}

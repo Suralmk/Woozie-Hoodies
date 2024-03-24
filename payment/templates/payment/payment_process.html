@@ -1,0 +1,46 @@
+{% extends 'shop/base.html' %} {% block page_title %} Woozie | Payment Process {% endblock %} {% load static %} 
+{% block basecontent %}
+
+<div class="paymentProcess">
+    <div class="paymentProcess__wrapper">
+        <h4>Here is your order please pay to complete the checkout!</h4>
+        <div class="paymentProcess__wrapper-orders">
+            <table >
+                <thead>
+                <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in order.items.all %}
+                <tr class="checkout__item">
+                <td>
+                <img src="{% if item.product.image %}{{ item.product.image.url }}
+                {% else %}{% static 'img/no_image.png' %}{% endif %}">
+                </td>
+                <td>{{ item.product.name }}</td>
+                <td class="num">{{ item.price }} ETB</td>
+                <td class="num">{{ item.quantity }}</td>
+                <td class="num">{{ item.get_cost }} ETB</td>
+                </tr>
+                {% endfor %}
+                <tr class="total">
+                <td colspan="4">Total</td>
+                <td class="num">{{ order.get_total_cost }} ETB</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <form action="{% url 'payment:process' %}" method="POST">
+            <button type="submit"> Pay Now</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

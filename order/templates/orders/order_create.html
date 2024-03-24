@@ -5,10 +5,11 @@
   <div class="orderCreate__wrapper">
     <div class="orderCreate__wrapper-form">
       <h4>Checkout</h4>
-      <form  method="POST" class="order-form"  action="{% url 'payment:process' %}">
+      <form  method="POST" class="order-form" action="">
         {{ form.as_p }}
         <p><input type="submit" value="Place order" /></p>
         {% csrf_token %}
+        {{ form.errors }}
       </form>
     </div>
 
