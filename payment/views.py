@@ -1,11 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.conf import settings
 from order.models import Order
-from chapa import Chapa
-from django.http import HttpResponse
+import chapa
+from chapa import Chapa, WEBHOOK_EVENT, WEBHOOKS_EVENT_DESCRIPTION
 from . utils import get_transaction_number
-chapa = Chapa(settings.CHAPA_SECRET)
+from django.contrib.auth.decorators import login_required
 
+
+chapaAPP = Chapa(settings.CHAPA_SECRET)
+
+@login_required(login_url="account_login")
 def payment_process(request):
     # get payment details from order model
     # first_name, last_name, email, amount
@@ -14,7 +18,6 @@ def payment_process(request):
     if request.method == "POST":
         success_url = request.build_absolute_uri(reverse('payment:completed'))
         cancel_url = request.build_absolute_uri(reverse('payment:canceled'))
-
         transaction_id = get_transaction_number()
         data = {
                 "email":order.email,
@@ -30,15 +33,17 @@ def payment_process(request):
                 }
             }
         
-        response = chapa.initialize(**data)
-        verification_response = chapa.verify(transaction_id)
-        print(verification_response)
+        response = chapaAPP.initialize(**data)
+        chapaAPP.verify(transaction_id)
         return redirect(response["data"].get("checkout_url"))
 
     return render(request, 'payment/payment_process.html', {"order" : order})
 
+@login_required(login_url="account_login")
 def payment_completed(request):
         return render(request, 'payment/payment_completed.html')
 
+@login_required(login_url="account_login")
 def payment_canceled(request):
         return render(request, 'payment/payment_canceled.html')
+

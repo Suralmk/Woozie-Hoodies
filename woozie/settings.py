@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
+from dotenv import load_dotenv
+
+load_dotenv()
 from celery import Celery
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
 
-    'django_chapa',
+    # 'django_chapa',
     'debug_toolbar',
     "django_redis",
     
@@ -250,13 +252,15 @@ CART_SESSION_ID = 'cart'
 # chapa Setting
 CHAPA_TRANSACTION_MODEL = 'woozie.chapa_model'
 
-CHAPA_SECRET = config("CHAPA_SECRET")
+CHAPA_SECRET = os.getenv("CHAPA_SECRET")
 
 CHAPA_API_URL = ''
 
 CHAPA_API_VERSION = 'v1'
 
 CHAPA_WEBHOOK_URL= "http://127.0.0.1:8000/"
+
+CHAPA_SECRET_HASH= "E8Ce9f1q5Aw3ED14d7G3Hj6j72uw5rfL"
 
 #Celery Configuration
 
