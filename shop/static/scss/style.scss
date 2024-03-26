@@ -688,21 +688,20 @@ footer {
       gap: 15px;
       input {
         width: 300px;
-        padding: 5px 10px;
+        padding: 7px 10px;
+        border-radius: 0;
       }
       select {
         width: 100px;
-        padding: 5px 10px;
+        padding: 7px 10px;
+        border-radius: 0;
       }
     }
     table {
       border-collapse: collapse;
       gap: 10px;
       border-radius: 10px;
-      overflow: hidden;
-      border: 0.5px solid rgba(53, 53, 53, 0.466);
       width: 100%;
-
       thead {
         tr {
           th {
@@ -721,7 +720,7 @@ footer {
           
           border-bottom: 0.5px solid rgba(53, 53, 53, 0.466);
           &:hover {
-            background: rgba(238, 238, 238, 0.346);
+            background: rgba(179, 198, 255, 0.233);
           }
           td {
             padding: 10px;
@@ -742,9 +741,45 @@ footer {
             &.num {
               @include flex_between();
               width: 100%;
+             
+              
               span {
-                
+                position: relative;
+                &:hover {
+                    ul {
+                      display: block;
+                      overflow: visible;
+                    }    
+                }
+                ul {
+                  cursor:auto;
+                  position:absolute;
+                  top: 0;
+                  right: -90px;
+                  background: $white;
+                  padding: 10px;
+                  z-index: 30;
+                  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+                  @include flex_column();
+                  gap: 10p;
+                  height: auto;
+                  
+                  display: none;
+                  li {
+                    margin-bottom: 5px;
+                    width: max-content;
+                    a {
+                      color: $black;
+                      &:hover {
+                        
+                      }
+                    }
+                  }
+                }
               }
+                
+                
+              
             }
           }
            img {

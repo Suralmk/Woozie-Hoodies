@@ -1018,16 +1018,16 @@ footer {
       gap: 15px; }
       .orders__wrapper-filter input {
         width: 300px;
-        padding: 5px 10px; }
+        padding: 7px 10px;
+        border-radius: 0; }
       .orders__wrapper-filter select {
         width: 100px;
-        padding: 5px 10px; }
+        padding: 7px 10px;
+        border-radius: 0; }
     .orders__wrapper table {
       border-collapse: collapse;
       gap: 10px;
       border-radius: 10px;
-      overflow: hidden;
-      border: 0.5px solid rgba(53, 53, 53, 0.466);
       width: 100%; }
       .orders__wrapper table thead tr th {
         text-align: start;
@@ -1040,7 +1040,7 @@ footer {
         .orders__wrapper table tbody tr {
           border-bottom: 0.5px solid rgba(53, 53, 53, 0.466); }
           .orders__wrapper table tbody tr:hover {
-            background: rgba(238, 238, 238, 0.346); }
+            background: rgba(179, 198, 255, 0.233); }
           .orders__wrapper table tbody tr td {
             padding: 10px; }
             .orders__wrapper table tbody tr td.unpaid {
@@ -1056,6 +1056,32 @@ footer {
               align-items: center;
               justify-content: space-between;
               width: 100%; }
+              .orders__wrapper table tbody tr td.num span {
+                position: relative; }
+                .orders__wrapper table tbody tr td.num span:hover ul {
+                  display: block;
+                  overflow: visible; }
+                .orders__wrapper table tbody tr td.num span ul {
+                  cursor: auto;
+                  position: absolute;
+                  top: 0;
+                  right: -90px;
+                  background: white;
+                  padding: 10px;
+                  z-index: 30;
+                  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: space-between;
+                  gap: 10p;
+                  height: auto;
+                  display: none; }
+                  .orders__wrapper table tbody tr td.num span ul li {
+                    margin-bottom: 5px;
+                    width: max-content; }
+                    .orders__wrapper table tbody tr td.num span ul li a {
+                      color: #383838; }
           .orders__wrapper table tbody tr img {
             width: 100px;
             height: 100px;

@@ -9,19 +9,19 @@
       <ul>
         <li>
           <h6>Full Name</h6>
-          <p>Surafel Melaku</p>
+          <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
         </li>
         <li>
           <h6>Username</h6>
-          <p>Suralmk</p>
+          <p>{{ request.user.username }}</p>
         </li>
         <li>
           <h6>Date Joined</h6>
-          <p>12 - 20 - 2023</p>
+          <p>{{ request.user.date_joined }}</p>
         </li>
         <li>
           <h6>Last Login</h6>
-          <p>12 - 20 - 2023</p>
+          <p>{{ request.user.last_login }}</p>
         </li>
       </ul>
     </div>
@@ -31,7 +31,7 @@
         <li>
           <h6>Email</h6>
           <div class="action">
-            <p>Suralmk@gmail.com</p>
+            <p>{{ request.user.email }}</p>
             <a href="" class="link-two">Change Email  <i class="ri-edit-fill"></i></a>
           </div>
         </li>
