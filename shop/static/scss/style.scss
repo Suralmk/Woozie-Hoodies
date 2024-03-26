@@ -29,6 +29,10 @@ nav {
     background: $white;
     color: $black;
     box-shadow: $box-shadow;
+    h3 {
+      font-family: $font-third;
+      color: $black;
+    }
     &.stick {
       position: fixed;
       z-index: 2;
