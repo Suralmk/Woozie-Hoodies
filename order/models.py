@@ -11,7 +11,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
-    phone_no = models.IntegerField(default="0")
+    phone_no = models.CharField(max_length=13)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)

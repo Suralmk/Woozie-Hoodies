@@ -11,6 +11,13 @@
         {% csrf_token %}
         {{ form.errors }}
       </form>
+      {% if messages %}
+      <ul class="errorlist">
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+  {% endif %}
     </div>
 
     <div class="orderCreate__wrapper-info">

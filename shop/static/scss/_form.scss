@@ -2,8 +2,6 @@
 @import "variables";
 
 form {
-
-
     width: 100%;
     @include flex_column();
     gap: 5px;
@@ -35,5 +33,13 @@ form {
         }   
     }
 
+}
+ul.errorlist {
+    @include flex_column();
+    gap: 5px;
+    li{
+        color: red;
+        list-style:disc;
+    }   
 }
 
