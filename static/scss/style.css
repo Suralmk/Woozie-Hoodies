@@ -618,6 +618,30 @@ footer {
       align-items: center;
       justify-content: center; }
 
+.mockups2 {
+  width: 100%;
+  height: auto;
+  background: white; }
+  .mockups2__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0; }
+    .mockups2__wrapper-main {
+      height: 500px; }
+      .mockups2__wrapper-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .mockups2__wrapper-sub {
+      flex: 1;
+      height: 500px;
+      width: 100%; }
+      .mockups2__wrapper-sub img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; }
+
 .mockups {
   width: 100%;
   height: auto;
