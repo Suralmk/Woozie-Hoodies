@@ -182,10 +182,10 @@
       </div>
     </nav>
     <dialog>
-      <form action="" role="search">
+      <form action="{% url 'shop:search_view' %}" role="search">
         <input
           type="text"
-          name="search"
+          name="search_query"
           id="search"
           placeholder="color,design, category..."
         />

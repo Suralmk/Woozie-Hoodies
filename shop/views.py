@@ -32,3 +32,13 @@ def product_category(request, category_slug):
 
 def user_account(request):
     return render(request, "shop/user/account.html")
+
+def search_view(request):
+    if request.method == 'GET':
+        query = request.GET["search_query"]
+        products = Product.objects.filter(name__icontains=query)
+        context = {
+        "products" : products,
+        'query': query
+            }
+        return render(request, 'shop/product_list.html', context)
