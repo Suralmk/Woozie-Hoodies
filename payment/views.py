@@ -6,7 +6,6 @@ from chapa import Chapa, WEBHOOK_EVENT, WEBHOOKS_EVENT_DESCRIPTION
 from . utils import get_transaction_number
 from django.contrib.auth.decorators import login_required
 
-
 chapaAPP = Chapa(settings.CHAPA_SECRET)
 
 @login_required(login_url="account_login")
@@ -14,7 +13,7 @@ def payment_process(request):
     order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
     if request.method == "POST":
-        transaction_id = get_transaction_number()
+        transaction_id = get_transaction_number(order_id)
         success_url = request.build_absolute_uri(reverse('payment:completed', kwargs={'tx_ref': transaction_id}))
         cancel_url = request.build_absolute_uri(reverse('payment:canceled',  kwargs={'tx_ref': transaction_id}))
         data = {
@@ -39,10 +38,27 @@ def payment_process(request):
 
 @login_required(login_url="account_login")
 def payment_completed(request, tx_ref):
+    if request.method == "GET":
+        tx_ref_list = tx_ref.split("-")
+        order_id = tx_ref_list[-1]
+        print(order_id)
+        order = Order.objects.get(id=order_id)
+        print(order)
+        order.tx_ref = tx_ref
+        order.paid = True
+        order.save()
         return render(request, 'payment/payment_completed.html')
 
 @login_required(login_url="account_login")
 def payment_canceled(request, tx_ref):
+    if request.method == "GET":
+        tx_ref_list = tx_ref.split("-")
+        order_id = tx_ref_list[-1]
+        print(order_id)
+        order = Order.objects.get(id=order_id)
+        order.tx_ref = None
+        order.paid = False
+        order.save()
         return render(request, 'payment/payment_canceled.html')
 
 @login_required(login_url="account_login")
