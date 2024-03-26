@@ -12,16 +12,22 @@ def order_create(request):
         form = CreateOrderForm(request.POST)
         print("---------------------")
         if form.is_valid():
-            order = form.save()
+            event = form.save(commit=False)
+            event.owner = request.user
+            event.save()
             for item in cart:
-                OrderItem.objects.create(order=order,
+                OrderItem.objects.create(order=event,
                                          product=item["product"],
                                          price=item["price"],
                                          quantity=item["quantity"])
             cart.clear()
-            order_created.delay(order.id)
-            request.session['order_id'] = order.id
+            order_created.delay(event.id)
+            request.session['order_id'] = event.id
             return redirect(reverse("payment:process"))
     else:
             form = CreateOrderForm()
     return render(request, "orders/order_create.html" ,{"cart" : cart, "form" : form})
+
+def orders_list(request):
+    orders = Order.objects.filter(owner=request.user)
+    return render(request, "orders/orders_list.html", {"orders" : orders})

@@ -909,4 +909,158 @@ footer {
     .paymentProcess__wrapper form {
       width: 150px; }
 
+.account {
+  width: 100%;
+  height: auto;
+  background: white;
+  min-height: 70vh; }
+  .account__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px; }
+    .account__wrapper-profile ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px; }
+      .account__wrapper-profile ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 5px; }
+        .account__wrapper-profile ul li p {
+          color: #383838; }
+    .account__wrapper-profile2 {
+      width: 100%; }
+      .account__wrapper-profile2 ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%; }
+        .account__wrapper-profile2 ul li {
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 5px; }
+          .account__wrapper-profile2 ul li .action {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; }
+            .account__wrapper-profile2 ul li .action p {
+              flex: 1;
+              padding: 10px 15px; }
+          .account__wrapper-profile2 ul li p {
+            color: #383838; }
+
+.payment {
+  width: 100%;
+  height: auto;
+  background: white;
+  min-height: 70vh; }
+  .payment__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px; }
+
+.orders {
+  width: 100%;
+  height: auto;
+  background: white;
+  min-height: 70vh; }
+  .orders__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px; }
+    .orders__wrapper-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .orders__wrapper-header .main p {
+        color: #383838; }
+    .orders__wrapper-filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      justify-content: flex-end;
+      width: 100%;
+      gap: 15px; }
+      .orders__wrapper-filter input {
+        width: 300px;
+        padding: 5px 10px; }
+      .orders__wrapper-filter select {
+        width: 100px;
+        padding: 5px 10px; }
+    .orders__wrapper table {
+      border-collapse: collapse;
+      gap: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 0.5px solid rgba(53, 53, 53, 0.466);
+      width: 100%; }
+      .orders__wrapper table thead tr th {
+        text-align: start;
+        background: rgba(49, 48, 48, 0.459);
+        padding: 10px; }
+      .orders__wrapper table tbody {
+        padding: 10px;
+        background: white;
+        gap: 10px; }
+        .orders__wrapper table tbody tr {
+          border-bottom: 0.5px solid rgba(53, 53, 53, 0.466); }
+          .orders__wrapper table tbody tr:hover {
+            background: rgba(238, 238, 238, 0.346); }
+          .orders__wrapper table tbody tr td {
+            padding: 10px; }
+            .orders__wrapper table tbody tr td.unpaid {
+              color: red; }
+              .orders__wrapper table tbody tr td.unpaid i {
+                color: rgba(255, 0, 0, 0.393); }
+            .orders__wrapper table tbody tr td.paid {
+              color: green; }
+              .orders__wrapper table tbody tr td.paid i {
+                color: rgba(0, 128, 0, 0.545); }
+            .orders__wrapper table tbody tr td.num {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%; }
+          .orders__wrapper table tbody tr img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain; }
+      .orders__wrapper table .total .num {
+        font-size: 25px; }
+
 /*# sourceMappingURL=style.css.map */

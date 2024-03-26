@@ -586,3 +586,179 @@ footer {
     }
   }
 }
+
+.account {
+  width: 100%;
+  height: auto;
+  background: $white;
+  min-height: 70vh;
+  &__wrapper {
+    @include flex_column();
+    @include screen_center();
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px;
+    &-profile {
+      ul {
+        @include flex_column();
+        align-items: flex-start;
+        gap: 15px;
+        li {
+          @include flex_column();
+          align-items: flex-start;
+          gap: 5px;
+          p {
+            color: $black;
+          }
+        }
+      }
+    }
+    &-profile2 {
+      width: 100%;
+      ul {
+        @include flex_column();
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%;
+        li {
+          width: 80%;
+          @include flex_column();
+          gap: 5px;
+          .action {
+            width: 100%;
+            @include flex_between();
+            background: $white;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            p {
+              flex: 1;
+              padding: 10px 15px;
+            }
+          }
+          p {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.payment {
+  width: 100%;
+  height: auto;
+  background: $white;
+  min-height: 70vh;
+  &__wrapper {
+    @include flex_column();
+    @include screen_center();
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px;
+  }
+}
+
+.orders {
+  width: 100%;
+  height: auto;
+  background: $white;
+  min-height: 70vh;
+  &__wrapper {
+    @include flex_column();
+    @include screen_center();
+    align-items: flex-start;
+    padding: 100px 200px;
+    gap: 30px;
+    &-header {
+      width: 100%;
+      @include flex_between();
+      .main {
+        p {
+          color: $black;
+        }
+        .sub {
+
+        }
+      }
+    }
+    &-filter {
+      @include flex_between();
+      justify-content: flex-end;
+      width: 100%;
+      gap: 15px;
+      input {
+        width: 300px;
+        padding: 5px 10px;
+      }
+      select {
+        width: 100px;
+        padding: 5px 10px;
+      }
+    }
+    table {
+      border-collapse: collapse;
+      gap: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 0.5px solid rgba(53, 53, 53, 0.466);
+      width: 100%;
+
+      thead {
+        tr {
+          th {
+            text-align: start;
+            background: $lightdark;
+            padding: 10px;
+          }
+        }
+      }
+
+      tbody{
+        padding: 10px;
+        background: $white;
+        gap: 10px;
+        tr {
+          
+          border-bottom: 0.5px solid rgba(53, 53, 53, 0.466);
+          &:hover {
+            background: rgba(238, 238, 238, 0.346);
+          }
+          td {
+            padding: 10px;
+            &.unpaid {
+              color: red;
+              i {
+                color: rgba(255, 0, 0, 0.393);
+              }
+              
+            }
+            &.paid {
+              color: green;
+              i {
+                color: rgba(0, 128, 0, 0.545);
+              }
+              
+            }
+            &.num {
+              @include flex_between();
+              width: 100%;
+              span {
+                
+              }
+            }
+          }
+           img {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        }
+        }
+      }
+      .total {
+        .num {
+          font-size: 25px;
+        }
+      } 
+    }
+  }
+}

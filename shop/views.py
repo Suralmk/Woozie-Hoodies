@@ -29,3 +29,6 @@ def product_detail(request, product_slug):
 def product_category(request, category_slug):
     products = Product.objects.filter(category__slug=category_slug)
     return render(request, "shop/product_category.html", {"products" : products})
+
+def user_account(request):
+    return render(request, "shop/user/account.html")

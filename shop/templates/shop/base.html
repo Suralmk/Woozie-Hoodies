@@ -120,9 +120,10 @@
               ><i class="ri-shopping-cart-line"></i
             ></a>
             {% with total_items=cart|length %}
-            <span class="cart__number  {% if total_items == 0 %} hidden {% endif %} ">
-               {% if total_items > 0 %}
-              {{total_items }} {% else %} 0 {% endif %} 
+            <span
+              class="cart__number {% if total_items == 0 %} hidden {% endif %}"
+            >
+              {% if total_items > 0 %} {{total_items }} {% else %} 0 {% endif %}
             </span>
             {% endwith %}
           </li>
@@ -131,9 +132,34 @@
             <a><i class="ri-user-3-line"></i></a>
             <ul class="pro__menu">
               <h5>Hello {{ request.user.first_name }}</h5>
-              <li>Account</li>
-              <li>Orders</li>
-              <li>Payments</li>
+              <li>
+                <p>
+                  <a
+                    style="color: rgb(29, 29, 29)"
+                    href="{% url 'shop:user_account' %}"
+                  >
+                    Account</a
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a
+                    style="color: rgb(29, 29, 29)"
+                    href="{% url 'orders:orders_list' %}"
+                    >Orders</a
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a
+                    style="color: rgb(29, 29, 29)"
+                    href="{% url 'payment:payment_list' %}"
+                    >Payment</a
+                  >
+                </p>
+              </li>
               <li>
                 <a href="{% url 'account_logout' %}"
                   ><i class="ri-logout-box-r-line"></i> Logout</a

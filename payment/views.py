@@ -11,8 +11,6 @@ chapaAPP = Chapa(settings.CHAPA_SECRET)
 
 @login_required(login_url="account_login")
 def payment_process(request):
-    # get payment details from order model
-    # first_name, last_name, email, amount
     order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
     if request.method == "POST":
@@ -47,3 +45,6 @@ def payment_completed(request):
 def payment_canceled(request):
         return render(request, 'payment/payment_canceled.html')
 
+@login_required(login_url="account_login")
+def payment_list(request):
+    return render(request, "payment/payment_list.html")

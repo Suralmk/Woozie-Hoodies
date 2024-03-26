@@ -8,4 +8,6 @@ urlpatterns = [
     path('completed/', payment_completed, name='completed'),
     path('canceled/', payment_canceled, name='canceled'),
     path('webhook', webhooks.chapa_webhook, name='webhook'),
+
+    path("list/", payment_list, name="payment_list"),
 ]

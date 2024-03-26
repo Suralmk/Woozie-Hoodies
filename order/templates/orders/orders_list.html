@@ -1,0 +1,64 @@
+{% extends 'shop/base.html' %} {% block page_title %} Orders | Woozie
+{% endblock %} {% block basecontent %} {% load static %}
+<div class="orders">
+    <div class="orders__wrapper">
+    <div class="orders__wrapper-header">
+        <div class="main">
+            <h4>Order History</h4>
+            <p>Manage your recent orders and innvoices</p>
+        </div>
+    </div>
+    <div class="orders__wrapper-filter">
+        <select name="" id="">
+            <option value="">All</option>
+            <option value="">Paid</option>
+            <option value="">Unpaid</option>
+        </select>
+        <input type="text" placeholder="orderID...">
+    </div>
+        <table >
+            <thead>
+            <tr>
+            <th>OrderID</th>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Adress</th>
+            <th>Quantity</th>
+            <th>Total</th>
+           
+            </tr>
+            </thead>
+            <tbody>
+           {% for order in orders.all %}
+            <tr class="checkout__item" >
+            <td>{{ order.id  }}</td>
+            <td>
+            {{ order.created|date }}        
+            </td>
+            <td>none</td>
+            <td class="{% if not order.paid %}unpaid {% else %} paid {% endif %}"><i class="ri-close-circle-fill"></i>
+                {% if not order.paid %}
+                 Not Paid
+                 {% else %}
+                 Paid
+                 {% endif %}
+                </td>
+            <td class="">{{ order.address }}</td>
+            <td class="">5</td>
+            <td class="num">{{ order.get_total_cost }}
+                <span><i class="ri-more-2-line"></i></span>
+            </td>
+            
+            </tr>
+            {% endfor %}
+           
+            <!-- <tr class="total">
+            <td colspan="5">Total</td>
+            <td class="num">2000 ETB</td>
+            </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

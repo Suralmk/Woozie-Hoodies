@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %} {% block page_title %} Account | Woozie 
+{% endblock %} {% block basecontent %} {% load static %}
+<div class="account">
+  <div class="account__wrapper">
+    <h4>Account Settings</h4>
+    <hr />
+    <h5>Account Profile</h5>
+    <div class="account__wrapper-profile">
+      <ul>
+        <li>
+          <h6>Full Name</h6>
+          <p>Surafel Melaku</p>
+        </li>
+        <li>
+          <h6>Username</h6>
+          <p>Suralmk</p>
+        </li>
+        <li>
+          <h6>Date Joined</h6>
+          <p>12 - 20 - 2023</p>
+        </li>
+        <li>
+          <h6>Last Login</h6>
+          <p>12 - 20 - 2023</p>
+        </li>
+      </ul>
+    </div>
+    <hr />
+    <div class="account__wrapper-profile2">
+      <ul>
+        <li>
+          <h6>Email</h6>
+          <div class="action">
+            <p>Suralmk@gmail.com</p>
+            <a href="" class="link-two">Change Email  <i class="ri-edit-fill"></i></a>
+          </div>
+        </li>
+        <li>
+          <h6>Password</h6>
+          <div class="action">
+            <p>* * * * * * * *</p>
+            <a class="link-two" href="{% url 'account_change_password' %}"
+              >Change Password <i class="ri-edit-fill"></i
+            ></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <hr />
+  </div>
+</div>
+{% endblock %}
