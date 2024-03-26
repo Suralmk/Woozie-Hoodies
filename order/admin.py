@@ -8,6 +8,7 @@ from .models import Order, OrderItem
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
+    
 def export_to_csv(modeladmin, request, query):
     opts = modeladmin.model._meta
     content_desposition = f'attachment; filename={opts.verbose_name}.csv '

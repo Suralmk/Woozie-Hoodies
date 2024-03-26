@@ -5,7 +5,7 @@ import chapa
 from chapa import Chapa, WEBHOOK_EVENT, WEBHOOKS_EVENT_DESCRIPTION
 from . utils import get_transaction_number
 from django.contrib.auth.decorators import login_required
-
+from . tasks import payment_done
 chapaAPP = Chapa(settings.CHAPA_SECRET)
 
 @login_required(login_url="account_login")
@@ -47,6 +47,7 @@ def payment_completed(request, tx_ref):
         order.tx_ref = tx_ref
         order.paid = True
         order.save()
+        payment_done.delay(order.id)
         return render(request, 'payment/payment_completed.html')
 
 @login_required(login_url="account_login")
