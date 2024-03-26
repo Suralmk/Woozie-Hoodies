@@ -42,22 +42,20 @@
 
 <table>
   <tr>
-    <th>Column 1 Header</th>
-    <td>Row 1, Col 1</td>
-    <td>Row 1, Col 2</td>
-    <td>Row 1, Col 3</td>
+    <th>Shop</th>
+    <td>All the shop related views, product detail and list are included in this app including authenticating.</td>
   </tr>
   <tr>
-    <th>Column 2 Header</th>
-    <td>Row 2, Col 1</td>
-    <td>Row 2, Col 2</td>
-    <td>Row 2, Col 3</td>
+    <th>Cart</th>
+    <td>This is where the implmentaion of redis comes in and used for cached session to store the cart items.</td>
   </tr>
   <tr>
-    <th>Column 3 Header</th>
-    <td>Row 3, Col 1</td>
-    <td>Row 3, Col 2</td>
-    <td>Row 3, Col 3</td>
+    <th>Order</th>
+    <td>Order app is to create orders and send the receipt of unpaid invoices via email using celery comes in. If a uses succesfully orders an item it will saved in the database with status of Unpaid untill they pay ot they delete it.</td>
+  </tr>
+  <tr>
+    <th>Payment</th>
+    <td>This app is where payment is handled and the respose from the webhook is recived. Also when a customer pays succesfully a receipt with paid status including all of the items they have bought will be send via email using celery.</td>
   </tr>
 </table>
 
