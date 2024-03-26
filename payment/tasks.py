@@ -18,7 +18,7 @@ def payment_done(order_id):
         from_email="surafelmelsku940@gmail.com",
         to=[order.email]
     )
-    # generationg the pdf invoice
+    # generating the pdf invoice
     order_html = render_to_string('orders/order_pdf.html', {"order" : order})
     out = BytesIO()
     style = [ weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
