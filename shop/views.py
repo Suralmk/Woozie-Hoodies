@@ -35,7 +35,7 @@ def user_account(request):
 
 def search_view(request):
     if request.method == 'GET':
-        query = request.GET["search_query"]
+        query = request.GET["search"]
         products = Product.objects.filter(name__icontains=query)
         context = {
         "products" : products,
