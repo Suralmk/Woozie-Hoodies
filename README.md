@@ -55,7 +55,7 @@
   </tr>
   <tr>
     <th>Payment</th>
-    <td>This app is where payment is handled and the respose from the webhook is recived. Also when a customer pays succesfully a receipt with paid status including all of the items they have bought will be send via email using celery.</td>
+    <td>This app is where payment is handled and the response from the webhook is recieved. Also when a customer pays succesfully a receipt with paid status including all of the items they have bought will be send via email using celery.</td>
   </tr>
 </table>
 
