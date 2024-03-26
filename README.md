@@ -40,11 +40,27 @@
 
 ###
 
-| Column 1 Header | Column 2 Header | Column 3 Header |
-|-----------------|-----------------|-----------------|
-| Row 1 Cell 1    | Row 1 Cell 2    | Row 1 Cell 3    |
-| Row 2 Cell 1    | Row 2 Cell 2    | Row 2 Cell 3    |
-| Row 3 Cell 1    | Row 3 Cell 2    | Row 3 Cell 3    |
+<table>
+  <tr>
+    <th>Column 1 Header</th>
+    <td>Row 1, Col 1</td>
+    <td>Row 1, Col 2</td>
+    <td>Row 1, Col 3</td>
+  </tr>
+  <tr>
+    <th>Column 2 Header</th>
+    <td>Row 2, Col 1</td>
+    <td>Row 2, Col 2</td>
+    <td>Row 2, Col 3</td>
+  </tr>
+  <tr>
+    <th>Column 3 Header</th>
+    <td>Row 3, Col 1</td>
+    <td>Row 3, Col 2</td>
+    <td>Row 3, Col 3</td>
+  </tr>
+</table>
+
 
 
 ###
