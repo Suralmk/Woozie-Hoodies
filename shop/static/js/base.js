@@ -1,7 +1,19 @@
 const nav_menu = document.querySelector('.nav__menu')
+const base__content = document.querySelector('.base__content')
 
 window.addEventListener('scroll', () => {
-  nav_menu.classList.toggle('stick', this.window.scrollY > 0)
+  if (window.scrollY > 0) {
+    nav_menu.classList.add('stick');
+   base__content.style.paddingTop = nav_menu.offsetHeight + 'px'; // Add padding to body
+  } else {
+      nav_menu.classList.remove('stick');
+      base__content.style.paddingTop = 0; // Reset padding
+  }
+  // nav_menu.classList.toggle('stick', () => {
+  //   this.window.scrollY > 0
+  //   base__content.style.paddingTop = nav_menu.offsetHeight + 'px';
+  // })
+
 })
 
 const searchBtn = document.querySelector('.search_menu')

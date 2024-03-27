@@ -28,7 +28,7 @@ nav {
     padding: 5px 40px;
     background: $white;
     color: $black;
-    box-shadow: $box-shadow;
+    box-shadow:  rgba(80, 80, 80, 0.136) 0px 1px 3px;
     h3 {
       font-family: $font-third;
       color: $black;
@@ -125,7 +125,10 @@ nav {
       }
     }
   }
-}
+} 
+// .base__content {
+//   padding-top: 100px;
+// }
 footer {
     width: 100%;
     background: $black;

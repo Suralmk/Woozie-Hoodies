@@ -32,7 +32,6 @@ hr {
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  transition: 0.4s;
   font-family: "Radio Canada", sans-serif; }
 
 html {
@@ -327,6 +326,9 @@ dialog {
     top: 10px;
     right: 20px; }
 
+.logo {
+  font-family: "Lacquer", system-ui; }
+
 form {
   width: 100%;
   display: flex;
@@ -401,7 +403,7 @@ nav {
     padding: 5px 40px;
     background: white;
     color: #383838;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 0.3rem 1rem; }
+    box-shadow: rgba(80, 80, 80, 0.136) 0px 1px 3px; }
     nav .nav__menu h3 {
       font-family: "Lacquer", system-ui;
       color: #383838; }
