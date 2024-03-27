@@ -5,7 +5,7 @@
   <div class="orderCreate__wrapper">
     <div class="orderCreate__wrapper-form">
       <h4>Checkout</h4>
-      <form  method="POST" class="order-form" action="">
+      <form  method="POST" id="orderForm" action="" onsubmit="(event) => validateForm(event)">
         {{ form.as_p }}
         <p><input type="submit" value="Place order" /></p>
         {% csrf_token %}

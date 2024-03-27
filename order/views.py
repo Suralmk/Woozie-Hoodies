@@ -14,6 +14,8 @@ from django.conf import settings
 @login_required(login_url="account_login")
 def order_create(request):
     cart = Cart(request)
+    if not cart:
+        return redirect(reverse("shop:home")) 
     initial_data = {
          "first_name" : request.user.first_name,
          "last_name" : request.user.last_name,

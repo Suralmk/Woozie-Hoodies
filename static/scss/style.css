@@ -83,6 +83,9 @@ ul.errorlist {
     color: red;
     list-style: disc; }
 
+input.error_input {
+  border-color: red; }
+
 .auth__container {
   display: flex;
   flex-direction: column;
@@ -373,6 +376,9 @@ ul.errorlist {
   ul.errorlist li {
     color: red;
     list-style: disc; }
+
+input.error_input {
+  border-color: red; }
 
 nav {
   display: flex;

@@ -37,6 +37,3 @@ searchDialog.addEventListener('click', e => {
   } else {
   }
 })
-const showSearch = () => {
-
-}
