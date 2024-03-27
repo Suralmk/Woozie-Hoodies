@@ -47,11 +47,11 @@
   </tr>
   <tr>
     <th>Cart</th>
-    <td>This is where the implmentaion of redis comes in and used for cached session to store the cart items.</td>
+    <td>This is where the implementation of redis comes in and used for cached session to store the cart items.</td>
   </tr>
   <tr>
     <th>Order</th>
-    <td>Order app is to create orders and send the receipt of unpaid invoices via email using celery comes in. If a uses succesfully orders an item it will saved in the database with status of Unpaid untill they pay ot they delete it.</td>
+    <td>Order app is used to create orders and send the receipt of unpaid invoices via email using celery. If a user succesfully orders an item it will be saved in the database with status of Unpaid until they pay or they delete it.</td>
   </tr>
   <tr>
     <th>Payment</th>
