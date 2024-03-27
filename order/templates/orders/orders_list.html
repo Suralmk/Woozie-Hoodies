@@ -10,14 +10,14 @@
     </div>
     <hr>
     <div class="orders__wrapper-filter">
-        <select name="" id="">
-            <option value="">All</option>
-            <option value="">Paid</option>
-            <option value="">Unpaid</option>
+        <select name="" id="" class="order_select">
+            <option value="all">All</option>
+            <option value="paid">Paid</option>
+            <option value="unpaid">Unpaid</option>
         </select>
-        <input type="text" placeholder="orderID...">
+        <input type="text" placeholder="orderID..." class="order_filter">
     </div>
-        <table >
+        <table class="orders_table">
             <thead>
             <tr>
             <th>OrderID</th>
@@ -39,11 +39,11 @@
             </td>
             <td>none</td>
             {% if not order.paid %}
-            <td class="unpaid "><i class="ri-close-circle-fill"></i>
+            <td class="unpaid"><i class="ri-close-circle-fill"></i>
              Not Paid
             </td>
             {% else %}
-            <td class="paid "> <i class="ri-checkbox-circle-fill"></i>
+            <td class="paid"> <i class="ri-checkbox-circle-fill"></i>
             Paid
             </td>
             {% endif %}
