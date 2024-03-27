@@ -1127,13 +1127,15 @@ footer {
                   flex-direction: column;
                   align-items: flex-start;
                   justify-content: space-between;
-                  gap: 10p;
+                  gap: 15px;
                   height: auto;
-                  display: none; }
+                  display: none;
+                  width: 120px; }
                   .orders__wrapper table tbody tr td.num span ul li {
-                    margin-bottom: 5px;
-                    width: max-content; }
+                    margin-bottom: 5px; }
                     .orders__wrapper table tbody tr td.num span ul li a {
+                      width: 100%;
+                      height: 100%;
                       color: #383838; }
           .orders__wrapper table tbody tr img {
             width: 100px;
