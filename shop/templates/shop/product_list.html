@@ -2,7 +2,12 @@
 collection {% endblock %} {% load static %} {% block basecontent %}
 <section class="products">
   <div class="products__wrapper">
+    {% if title %}
+    <h3>{{ title }}</h3>
+    {% else %}
     <h3>Checkout our latest Hoodie and T-Shirt designs</h3>
+    {% endif %}
+
     <div class="product__list">
       {% for product in products %}
       <div class="product">
@@ -25,7 +30,6 @@ collection {% endblock %} {% load static %} {% block basecontent %}
       </div>
       {% endfor %}
     </div>
-    <div class="see-more"><a href="" class="link-one">See More</a></div>
   </div>
 </section>
 

@@ -39,6 +39,7 @@ def search_view(request):
         products = Product.objects.filter(name__icontains=query)
         context = {
         "products" : products,
-        'query': query
+        'query': query,
+        "title" : f"Search Result for {query}"
             }
         return render(request, 'shop/product_list.html', context)

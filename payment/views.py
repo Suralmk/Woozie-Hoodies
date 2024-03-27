@@ -11,17 +11,16 @@ chapaAPP = Chapa(settings.CHAPA_SECRET)
 @login_required(login_url="account_login")
 def payment_process(request, order_id=None):
     if order_id is None:
-        order_id = request.session.get('order_id', None)
-
-    order = get_object_or_404(Order, id=order_id)
+        order_obj_id = request.session.get('order_id', None)
+    else:
+        order_obj_id= order_id
+        
+    order = get_object_or_404(Order, id=order_obj_id)
     
     if request.method == "POST":
-        
-        if order_id is not None:
-            order_id = request.session.get('order_id', None)
-            order = get_object_or_404(Order, id=order_id)
 
-        transaction_id = get_transaction_number(order_id)
+
+        transaction_id = get_transaction_number(order_obj_id)
         success_url = request.build_absolute_uri(reverse('payment:completed', kwargs={'tx_ref': transaction_id}))
         cancel_url = request.build_absolute_uri(reverse('payment:canceled',  kwargs={'tx_ref': transaction_id}))
         data = {
