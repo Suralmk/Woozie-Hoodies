@@ -26,6 +26,7 @@ def export_to_csv(modeladmin, request, query):
                 value = value.strftime("%d/%m/%Y")
             data_row.append(value)
         csv_writer.writerow(data_row)
+        
     return response
 
 export_to_csv.short_description = "Export to Csv"

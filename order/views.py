@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from . models import Order, OrderItem
 from .forms import CreateOrderForm
 from cart.cart import Cart
@@ -6,6 +6,11 @@ from .tasks import order_created
 from django.contrib.auth.decorators import login_required
 from . utils import validate_phone_number
 from django.contrib import messages
+from django.http import HttpResponse
+import weasyprint
+from django.template.loader import render_to_string
+from django.conf import settings
+
 @login_required(login_url="account_login")
 def order_create(request):
     cart = Cart(request)
@@ -39,3 +44,12 @@ def order_create(request):
 def orders_list(request):
     orders = Order.objects.filter(owner=request.user)
     return render(request, "orders/orders_list.html", {"orders" : orders})
+
+def orders_download(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    order_html = render_to_string('orders/order_pdf.html', {"order" : order})
+    style = [ weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
+    pdf = weasyprint.HTML(string=order_html).write_pdf(stylesheets=style)
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{order.id}.pdf"'  
+    return response

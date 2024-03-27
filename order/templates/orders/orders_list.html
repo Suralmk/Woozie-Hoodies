@@ -52,8 +52,10 @@
             <td class="num">{{ order.get_total_cost }}
                 <span style="cursor: pointer;"><i class="ri-more-2-line"></i>
                  <ul>
-                    <li><a href=""> <i class="ri-download-line"></i>  Download</a></li>
+                    <li><a href="{% url 'orders:orders_download' order.id  %}"> <i class="ri-download-line"></i>  Download</a></li>
+                    {% if not order.paid %}
                     <li><a href=""> <i class="ri-delete-bin-line"></i> Delete</a></li>
+                    {% endif  %}
                 </ul>
                 </span>
                
