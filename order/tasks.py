@@ -37,7 +37,9 @@ def order_created(order_id):
 @shared_task
 def download_order(order_id):
     order = get_object_or_404(Order, pk=order_id)
+    pdf_buffer = BytesIO()
     order_html = render_to_string('orders/order_pdf.html', {"order" : order})
-    style = [ weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
-    pdf = weasyprint.HTML(string=order_html).write_pdf(stylesheets=style)
-    return pdf
+    style = [weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
+    weasyprint.HTML(string=order_html).write_pdf(pdf_buffer, stylesheets=style)
+    return  pdf_buffer.getvalue()
+

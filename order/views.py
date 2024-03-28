@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from . models import Order, OrderItem
 from .forms import CreateOrderForm
 from cart.cart import Cart
@@ -7,10 +7,7 @@ from django.contrib.auth.decorators import login_required
 from . utils import validate_phone_number
 from django.contrib import messages
 from django.http import HttpResponse
-import weasyprint
-from django.template.loader import render_to_string
-from django.conf import settings
-
+from io import BytesIO
 @login_required(login_url="account_login")
 def order_create(request):
     cart = Cart(request)
@@ -48,9 +45,8 @@ def orders_list(request):
     return render(request, "orders/orders_list.html", {"orders" : orders})
 
 def orders_download(request, order_id):
-    pdf = download_order.delay(order_id)
-    response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="{order_id}.pdf"'  
+    response = HttpResponse(download_order.delay(order_id).get(), content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{order_id}.pdf"' 
     return response
 
 def order_delete(request, order_id):

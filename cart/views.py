@@ -21,13 +21,22 @@ def update_cart(request):
 def cart_add(request):
     cart = Cart(request)
     data = json.loads(request.body)
-    print(data)
     product_id = data.get("productId")
     product = get_object_or_404(Product, id=product_id)
     cart.add(product=product,
         quantity=int(data.get('quantity')),
         override_quantity=data.get('override'))
-    return JsonResponse({"cart_number" : cart.__len__(), "total_price" : cart.get_total_price()}, safe=False)
+    for item in cart:
+        product = item["product"]
+        if int(product.id) == int(product_id):
+            item_price = item["total_price"]
+    
+    return JsonResponse(
+        {"cart_number" : cart.__len__(),
+         "total_price" : cart.get_total_price(),
+         "item_price" : item_price
+        },
+            safe=False)
 
 @require_POST
 def cart_remove(request):

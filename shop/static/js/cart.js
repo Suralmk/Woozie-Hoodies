@@ -1,9 +1,10 @@
 var updateBtns = document.querySelectorAll('.update-cart')
 const totalPrice = document.querySelector('.total__price')
 for (var i = 0; i < updateBtns.length; i++) {
-  updateBtns[i].addEventListener('click', function () {
+  updateBtns[i].addEventListener('click', function (event) {
     var override, quantity
     var productId = this.dataset.product
+    element = event.target
     if (this.classList.contains('override')) {
       quantity = this.parentElement.querySelector('input').value.trim()
       if (!quantity) {
@@ -22,20 +23,20 @@ for (var i = 0; i < updateBtns.length; i++) {
     if (user === 'AnonymousUser') {
       console.log('Not logged in')
     } else {
-      cartAdd(productId, quantity, override)
+      cartAdd(productId, quantity, override, element)
     }
   })
 }
 
-const updateCartInput = document.querySelectorAll("#update_cart")
+const updateCartInput = document.querySelectorAll(".update_cart_input")
 
 for(var i = 0; i < updateCartInput.length; i++ ) {
   var value, productId, override
-  console.log(updateCartInput[i])
   updateCartInput[i].addEventListener("input", (event) => {
     value = event.target.value
     override = event.target.dataset.override
     productId = event.target.dataset.product
+    element = event.target
     if (value == 0) {
       event.target.style.borderColor = "red"
     } else  {
@@ -43,14 +44,14 @@ for(var i = 0; i < updateCartInput.length; i++ ) {
       if (override === "true") {
         override = true
       }
-      cartAdd(productId, value, override)
+      cartAdd(productId, value, override, element)
     }
 
   })
 }
 
 const cartNumber = document.querySelectorAll('.cart__number')
-const cartAdd = (productId, quantity, override) => {
+const cartAdd = (productId, quantity, override, element) => {
   var url = '/cart/update-cart/'
   fetch(url, {
     method: 'POST',
@@ -75,6 +76,7 @@ const cartAdd = (productId, quantity, override) => {
       });
       console.log(data)
       totalPrice.innerHTML = data.total_price
+      element.parentElement.querySelector(".total-price").innerHTML = data.item_price
     })
 }
 
