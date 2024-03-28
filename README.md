@@ -23,7 +23,7 @@
 <br clear="both">
 
 <div align="center">
-  <img height="300" src="https://github.com/Suralmk/Woozie-Hoodies/blob/main/shop/static/img/Screenshot%20(420).png"  />
+  <img height="300" src="https://github.com/Suralmk/Woozie-Hoodies/blob/main/shop/static/img/gihub.png"  />
 </div>
 
 ###
