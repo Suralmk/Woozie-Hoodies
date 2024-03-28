@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . models import Category, Product
 from django.http import JsonResponse
 import json
+from django.utils.translation import activate
 # Create your views here.
 
 def home(request):
@@ -43,3 +44,7 @@ def search_view(request):
         "title" : f"Search Result for {query}"
             }
         return render(request, 'shop/product_list.html', context)
+    
+def change_language(request):
+    language = 'am'  
+    activate(language)

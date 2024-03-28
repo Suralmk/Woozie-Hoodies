@@ -119,5 +119,3 @@ const cartRemove = async (productId, item) => {
       }
     })
 }
-
-

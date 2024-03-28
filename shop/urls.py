@@ -11,4 +11,5 @@ urlpatterns = [
 
     path("account/", user_account, name="user_account"),
     path("search_view/", search_view, name="search_view"),
+    path("change_language/", change_language, name="change_language"),
 ]
