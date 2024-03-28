@@ -14,7 +14,20 @@
 {% endfor %}
 {% endif %}
 <li>
-  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+  <form action="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" method="POST">
+    {% csrf_token %}
+    <button class="auth_btn">
+      <img 
+      src="
+     {% with 'img/'|add:provider.name|add:'.png' as image %}
+      {% static image %}
+     {% endwith %}
+     " alt="{{ provider.name }}" height="50" width="300"/>
+      
+     Log In with {{provider.name}}
+    </button>
+  </form>
+  <!-- <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
      
      <img 
@@ -24,6 +37,6 @@
     {% endwith %}
     " alt="{{ provider.name }}" height="50" width="300"/>
      
-    Log In with {{provider.name}}</a>
+    Log In with {{provider.name}}</a> -->
 </li>
 {% endfor %}

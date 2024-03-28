@@ -9,6 +9,23 @@ button, input[type=submit] {
     cursor: pointer;
     border-radius: 5px;
 }
+button.auth_btn {
+  width: 100%;
+  @include flex_center();
+  padding: 10px 15px;
+  gap: 20px;
+  color: $black;
+  font-size:16px;
+  background: none;
+  margin: 0;
+  &:hover {
+      background: $lightwhite
+  }
+  img {
+      width: 20px;
+      height: auto;
+  }
+}
 input {
   width: 100%;
   border: 1px solid $lightdark;
@@ -203,4 +220,52 @@ select {
 
 .logo {
   font-family: $font-third;
+}
+
+/* Container for the "or" text */
+.or-container {
+  position: relative;;
+  text-align: center;
+  width: 100%;
+  align-items: center;
+}
+
+/* Horizontal line */
+.or-container::before,
+.or-container::after {
+  content: "";
+  display: inline-block;
+  width: 40%;
+  border-top: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+/* "Or" text style */
+.or-text {
+  display: inline-block;
+  padding: 0 10px;
+  font-weight: bold;
+  color: #555;
+  position: relative;
+  top: -5px; /* Adjust as needed */
+  background-color: #fff; /* Ensure text is on top of the line */
+}
+
+
+.message_list {
+  @include flex_column();
+  gap: 10px;
+  li.error {
+    padding: 10px;
+    background: rgba(255, 0, 0, 0.095);
+    color: red;
+    border: 1px solid red;
+  }
+  li.success {
+    padding: 10px;
+    background: rgba(0, 128, 0, 0.095);
+    color: green;
+    border: 1px solid green;
+  }
+
 }

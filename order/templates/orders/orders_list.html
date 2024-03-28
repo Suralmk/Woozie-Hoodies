@@ -55,7 +55,7 @@
                     <li><a href="{% url 'orders:orders_download' order.id  %}"> <i class="ri-download-line"></i>Download</a></li>
                     
                     {% if not order.paid %}
-                    <li><a href=""> <i class="ri-delete-bin-line"></i> Delete</a></li>
+                    <li><a href="{% url 'orders:order_delete' order.id %}"> <i class="ri-delete-bin-line"></i> Delete</a></li>
                     <li> <form action="{% url 'payment:process_id' order.id %}" method="POST">
                         {% csrf_token %} <button style="margin: 0; padding: 7px 15px;" type="submit"><i class="ri-currency-fill"></i> Pay Now</button></form> </li>
                     {% endif  %}

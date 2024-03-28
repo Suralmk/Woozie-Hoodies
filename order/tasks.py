@@ -2,6 +2,8 @@ from celery import shared_task
 from django.core.mail import send_mail
 from .models import Order
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 from io import BytesIO
 from django.template.loader import render_to_string
@@ -31,3 +33,11 @@ def order_created(order_id):
     weasyprint.HTML(string=order_html).write_pdf(out, stylesheets=style)
     email.attach(f'order_{order.id}.pdf',out.getvalue(),'application/pdf')
     email.send()
+
+@shared_task
+def download_order(order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    order_html = render_to_string('orders/order_pdf.html', {"order" : order})
+    style = [ weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
+    pdf = weasyprint.HTML(string=order_html).write_pdf(stylesheets=style)
+    return pdf

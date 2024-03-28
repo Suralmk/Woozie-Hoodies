@@ -93,7 +93,8 @@ input.error_input {
   justify-content: space-between;
   width: 100%;
   height: 100vh;
-  background: rgba(218, 218, 218, 0.405);
+  background: #e4e4e4;
+  background: linear-gradient(-125deg, rgba(228, 228, 228, 0.272146) 0%, rgba(117, 117, 117, 0.535452) 55%, rgba(255, 164, 5, 0.260942) 100%);
   justify-content: center;
   align-items: center;
   gap: 40px; }
@@ -114,9 +115,20 @@ input.error_input {
   border-radius: 10px; }
   .auth__wrapper p {
     color: #383838; }
+    .auth__wrapper p label::after {
+      content: "*";
+      color: red;
+      width: 7px;
+      height: 7px;
+      display: inline-flex; }
   .auth__wrapper h1 {
     font-size: 30px;
     opacity: 0.9; }
+  .auth__wrapper a {
+    color: #383838;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 15px; }
   .auth__wrapper .socialaccount_ballot {
     display: block;
     width: 100%; }
@@ -130,20 +142,6 @@ input.error_input {
         width: 100%;
         border: 1px solid #383838;
         border-radius: 5px; }
-        .auth__wrapper .socialaccount_ballot .socialaccount_providers li a {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px 15px;
-          gap: 20px;
-          color: #383838;
-          font-weight: 400; }
-          .auth__wrapper .socialaccount_ballot .socialaccount_providers li a:hover {
-            background: rgba(218, 218, 218, 0.405); }
-          .auth__wrapper .socialaccount_ballot .socialaccount_providers li a img {
-            width: 20px;
-            height: auto; }
 
 button, input[type=submit] {
   width: 100%;
@@ -155,6 +153,23 @@ button, input[type=submit] {
   margin-top: 20px;
   cursor: pointer;
   border-radius: 5px; }
+
+button.auth_btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  gap: 20px;
+  color: #383838;
+  font-size: 16px;
+  background: none;
+  margin: 0; }
+  button.auth_btn:hover {
+    background: rgba(218, 218, 218, 0.405); }
+  button.auth_btn img {
+    width: 20px;
+    height: auto; }
 
 input {
   width: 100%;
@@ -331,6 +346,51 @@ dialog {
 
 .logo {
   font-family: "Lacquer", system-ui; }
+
+/* Container for the "or" text */
+.or-container {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  align-items: center; }
+
+/* Horizontal line */
+.or-container::before,
+.or-container::after {
+  content: "";
+  display: inline-block;
+  width: 40%;
+  border-top: 1px solid #ccc;
+  vertical-align: middle; }
+
+/* "Or" text style */
+.or-text {
+  display: inline-block;
+  padding: 0 10px;
+  font-weight: bold;
+  color: #555;
+  position: relative;
+  top: -5px;
+  /* Adjust as needed */
+  background-color: #fff;
+  /* Ensure text is on top of the line */ }
+
+.message_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px; }
+  .message_list li.error {
+    padding: 10px;
+    background: rgba(255, 0, 0, 0.095);
+    color: red;
+    border: 1px solid red; }
+  .message_list li.success {
+    padding: 10px;
+    background: rgba(0, 128, 0, 0.095);
+    color: green;
+    border: 1px solid green; }
 
 form {
   width: 100%;

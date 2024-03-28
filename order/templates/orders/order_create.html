@@ -12,11 +12,15 @@
         {{ form.errors }}
       </form>
       {% if messages %}
-      <ul class="errorlist">
+     
+      <ul class="message_list">
           {% for message in messages %}
-              <li>{{ message }}</li>
+          {% if message.tags == "error" %}
+              <li class="{{ message.tags }}"><i class="ri-error-warning-fill"></i>  {{ message }}</li>
+              {% endif %}
           {% endfor %}
       </ul>
+
   {% endif %}
     </div>
 

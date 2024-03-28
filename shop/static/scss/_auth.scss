@@ -6,7 +6,8 @@
         @include flex_column();
         width: 100%;
         height: 100vh;
-        background: $lightwhite;
+        background: rgb(228,228,228);
+        background: linear-gradient(-125deg, rgba(228,228,228,0.2721463585434174) 0%, rgba(117,117,117,0.5354516806722689) 55%, rgba(255,164,5,0.26094187675070024) 100%);
         justify-content: center;
         align-items: center;
         gap: 40px;
@@ -26,10 +27,23 @@
         border-radius: 10px;
         p {
             color: $black;
+            label::after {
+                content:"*";
+                color: red;
+                width: 7px;
+                height: 7px;
+                display: inline-flex;
+            }
         }
         h1 {
             font-size: 30px;
             opacity: 0.9;
+        }
+        a {
+            color: $black;
+            font-size: 15px;
+            font-weight: 400;
+            margin-top: 15px;
         }
         .socialaccount_ballot {
             display: block;
@@ -41,21 +55,6 @@
                     width: 100%;
                     border: $border;
                     border-radius: 5px;
-                    a {
-                        width: 100%;
-                        @include flex_center();
-                        padding: 10px 15px;
-                        gap: 20px;
-                        color: $black;
-                        font-weight: 400;
-                        &:hover {
-                            background: $lightwhite
-                        }
-                        img {
-                            width: 20px;
-                            height: auto;
-                        }
-                    }
                 }
             }
         }
