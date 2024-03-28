@@ -26,6 +26,29 @@ for (var i = 0; i < updateBtns.length; i++) {
     }
   })
 }
+
+const updateCartInput = document.querySelectorAll("#update_cart")
+
+for(var i = 0; i < updateCartInput.length; i++ ) {
+  var value, productId, override
+  console.log(updateCartInput[i])
+  updateCartInput[i].addEventListener("input", (event) => {
+    value = event.target.value
+    override = event.target.dataset.override
+    productId = event.target.dataset.product
+    if (value == 0) {
+      event.target.style.borderColor = "red"
+    } else  {
+      event.target.style.borderColor = "rgb(56, 56, 56)"
+      if (override === "true") {
+        override = true
+      }
+      cartAdd(productId, value, override)
+    }
+
+  })
+}
+
 const cartNumber = document.querySelectorAll('.cart__number')
 const cartAdd = (productId, quantity, override) => {
   var url = '/cart/update-cart/'
