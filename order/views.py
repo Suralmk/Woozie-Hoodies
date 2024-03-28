@@ -45,7 +45,8 @@ def orders_list(request):
     return render(request, "orders/orders_list.html", {"orders" : orders})
 
 def orders_download(request, order_id):
-    response = HttpResponse(download_order.delay(order_id).get(), content_type='application/pdf')
+    pdf = download_order.delay(order_id).get()
+    response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="{order_id}.pdf"' 
     return response
 

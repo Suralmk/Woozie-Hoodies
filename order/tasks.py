@@ -9,6 +9,7 @@ from io import BytesIO
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 import weasyprint
+import logging
 @shared_task
 def order_created(order_id):
     """
@@ -34,12 +35,14 @@ def order_created(order_id):
     email.attach(f'order_{order.id}.pdf',out.getvalue(),'application/pdf')
     email.send()
 
+# logger = logging.getLogger('weasyprint')
+# logger.setLevel(logging.ERROR)
+
 @shared_task
 def download_order(order_id):
     order = get_object_or_404(Order, pk=order_id)
     pdf_buffer = BytesIO()
     order_html = render_to_string('orders/order_pdf.html', {"order" : order})
-    style = [weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
+    style = [ weasyprint.CSS(settings.STATIC_ROOT / "css/pdf.css")]
     weasyprint.HTML(string=order_html).write_pdf(pdf_buffer, stylesheets=style)
     return  pdf_buffer.getvalue()
-
