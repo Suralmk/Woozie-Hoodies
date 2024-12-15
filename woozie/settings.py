@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-dl*s1zvyw0s!!x@0mq_5%j5k&j7*9f*)*a3vbmrmq@!@x7)su1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -244,7 +244,7 @@ SOCIALACCOUNT_PROVIDERS = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Adjust the URL as per your Redis configuration
+        'LOCATION': 'redis://redis:6379/0',  # Adjust the URL as per your Redis configuration
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -275,10 +275,10 @@ CHAPA_WEBHOOK_URL= "http://127.0.0.1:8000/"
 CHAPA_SECRET_HASH= "E8Ce9f1q5Aw3ED14d7G3Hj6j72uw5rfL"
 
 #Celery Configuration
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
 
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 CELERY_IMPORTS = ('order.tasks',)
 
