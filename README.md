@@ -71,6 +71,29 @@
 
 ###
 
+## Installation
+
+Clone the github repository
+
+```bash
+  git clone https://github.com/Suralmk/Woozie-Hoodies.git
+
+  cd Woozie-Hoodies
+```
+
+Considering you already have docker instalelld
+
+```bash
+  docker-compose up --build
+```
+
+Open browser and run
+
+
+```bash
+  0.0.0.0:8000
+```
+
 <h2 align="left">Author</h2>
 
 ###

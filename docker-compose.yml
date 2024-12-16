@@ -4,7 +4,7 @@ services:
     container_name: woozie-app
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/woozieapp  # Corrected syntax
+      - .:/woozieapp 
     ports:
       - "8000:8000"
     environment:
@@ -15,17 +15,15 @@ services:
     depends_on:
       - db
       - redis
-
   celery:
     build: .
     command: celery -A woozie worker --loglevel=info
     volumes:
-      - .:/woozieapp  # Corrected syntax
+      - .:/woozieapp  
     depends_on:
       - django
       - redis
       - db
-
   db:
     image: postgres
     container_name: pg_db
@@ -34,12 +32,11 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data  # Removed trailing slash
+      - pgdata:/var/lib/postgresql/data  
     ports:
-      - "5432:5432"  # Optional: expose PostgreSQL port
-
+      - "5432:5432"  
   redis:
     image: redis:alpine
 
 volumes:
-  pgdata:  # Named volume definition
+  pgdata: 
