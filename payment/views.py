@@ -6,7 +6,7 @@ from .utils import get_transaction_number
 from django.contrib.auth.decorators import login_required
 from .tasks import payment_done
 
-chapaAPP = Chapa("CHASECK_TEST-Q4sSmSLwdw7FI4Lx0N5xbgsZuEB0QA0O")
+chapaAPP = Chapa(settings.CHAPA_SECRET)
 
 @login_required(login_url="account_login")
 def payment_process(request, order_id=None):
